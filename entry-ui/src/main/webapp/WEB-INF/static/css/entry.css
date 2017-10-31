@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.ha{
+	color:#ff0000;
+	background:url(../img/banner.jpg);
+	display:block;
+	width:200px;
+	height:200px;
+}
