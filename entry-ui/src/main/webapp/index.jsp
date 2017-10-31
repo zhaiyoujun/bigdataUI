@@ -19,7 +19,7 @@
 			<div class="item-content">
 				<p class="name">文件管理系统（OLAP）</p>
 				<p class="descr" id="descrOLAP"></p>
-				<a href="">点击查看</a>
+				<a href="http://baidu.com">点击查看</a>
 			</div>
 		</li>
 		<li class="item-storm">

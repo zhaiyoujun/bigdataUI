@@ -67,6 +67,7 @@ html,body,p{
 }
 .item-content a{
 	padding-left:10px;
+	line-height:44px;
 	font-size:18px;
 	color:#3939c7;
 	text-decoration:none;
