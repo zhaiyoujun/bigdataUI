@@ -4,11 +4,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>iecas-bigdata</title>
-<link src="./index.css">
+<link rel="stylesheet" type="text/css" href="static/css/index.css"/>
 </head>
 <body>
     <center>
-        <h2>Hello World</h2>
+        <h2 class="ha">Hello World</h2>
     </center>
 </body>
 </html>
