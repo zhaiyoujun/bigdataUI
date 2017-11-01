@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
 	<div class="navbar">
 		<div class="logo">OLAP&nbsp;&nbsp;管理系统</div>
 		<div class="nav-group">
-			<a class="nav-item-cluster selected" href="index.jsp">集群</a>
+			<a class="nav-item-cluster selected" href=".">集群</a>
 			<a class="nav-item-data" href="showdatabases">数据</a>
 		</div>
 		<div class="refresh" onclick="myrefresh()">刷新</div>
