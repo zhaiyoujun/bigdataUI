@@ -13,6 +13,9 @@ pageEncoding="UTF-8"%>
         <h3>
             <a href="hello?name=zhangsan">点击跳转</a>
         </h3>
+        <h4>
+            <a href="showtables?database=test">show tables;</a>
+        </h4>
     </center>
 </body>
 </html>
