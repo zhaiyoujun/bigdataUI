@@ -20,6 +20,7 @@ pageEncoding="UTF-8"%>
         <h3>
             <a href="showtables?database=test">show tables;</a>
         </h3>
+        
     </center>
     <!-- navbar start -->
 	<div class="navbar">
