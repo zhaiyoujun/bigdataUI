@@ -13,9 +13,12 @@ pageEncoding="UTF-8"%>
         <h3>
             <a href="hello?name=zhangsan">点击跳转</a>
         </h3>
-        <h4>
+        <h3>
+            <a href="showdatabases">show databases;</a>
+        </h3>
+        <h3>
             <a href="showtables?database=test">show tables;</a>
-        </h4>
+        </h3>
     </center>
 </body>
 </html>

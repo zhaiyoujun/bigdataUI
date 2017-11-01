@@ -28,6 +28,8 @@ public class QueryService {
       for (int i = 1; i <= rs.getMetaData().getColumnCount(); ++i) {
         columnNames.add(new JsonPrimitive(rs.getMetaData().getColumnName(i)));
       }
+      result.add("columns", columnNames);
+
       JsonArray rows = new JsonArray();
       for (int rid = 0; rs.next(); ++rid) {
         JsonArray row = new JsonArray();
@@ -36,10 +38,9 @@ public class QueryService {
         }
         rows.add(row);
       }
-      result.add("meta", columnNames);
+
       result.add("rows", rows);
-      
-      
+
       stmt.close();
       conn.close();
 

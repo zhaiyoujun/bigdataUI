@@ -28,6 +28,21 @@ public class HelloSpringController {
         return mv;
     }
     
+    @RequestMapping("/showdatabases")
+    public ModelAndView shwoDatabases() throws ClassNotFoundException, SQLException, IOException {
+     
+//    	System.out.println("返回成功");
+    	String sql = "show databases;";
+    	String query = queryService.query(sql);
+//    	System.out.println("返回成功"+query);
+    	ModelAndView mv = new ModelAndView("showDatabases");//指定视图
+    	//向视图中添加所要展示或使用的内容，将在页面中使用
+    	mv.addObject("sql", sql);
+        mv.addObject("rs", query);
+    
+        return mv;        
+    }
+    
     @RequestMapping("/showtables")
     public ModelAndView shwoTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
      
