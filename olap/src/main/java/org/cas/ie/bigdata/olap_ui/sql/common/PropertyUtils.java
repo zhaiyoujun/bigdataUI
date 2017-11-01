@@ -9,7 +9,7 @@ public class PropertyUtils {
 	    if (!name.endsWith(".properties"))
 	      name = name + ".properties";
 	    Properties p = new Properties();
-	    p.load(ClassLoader.getSystemResourceAsStream(name));
+	    p.load(ClassLoader.getSystemResourceAsStream("/src/main/resources" + name));
 	    return p;
 	  }
 
