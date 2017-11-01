@@ -19,18 +19,9 @@ public class HelloSpringController {
 	@Autowired
     QueryService queryService;
 	
-    String message = "Welcome to Spring MVC!";
- 
-    @RequestMapping("/hello")
-    public ModelAndView showMessage(@RequestParam(value = "name", required = false, defaultValue = "Spring") String name) {
-    	 
-        ModelAndView mv = new ModelAndView("hellospring");//指定视图
-        //向视图中添加所要展示或使用的内容，将在页面中使用
-        mv.addObject("message", message);
-        mv.addObject("name", name);
-        return mv;
-    }
-    
+	@Autowired
+	DBUtils dbUtils;
+	
     @RequestMapping("/showdatabases")
     public ModelAndView shwoDatabases() throws ClassNotFoundException, SQLException, IOException {
      
@@ -38,7 +29,7 @@ public class HelloSpringController {
     	
     	String sql = "show databases;";
     	
-    	Connection conn = DBUtils.connect();
+    	Connection conn = dbUtils.connect(null);
     	
     	String rs = queryService.query(sql, conn);
     	
@@ -57,7 +48,7 @@ public class HelloSpringController {
     	
     	String sql = "show tables;";
     	
-    	Connection conn = DBUtils.connect(name);
+    	Connection conn = dbUtils.connect(name);
     	
     	String rs = queryService.query(sql, conn);
     	

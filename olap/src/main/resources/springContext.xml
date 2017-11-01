@@ -27,5 +27,11 @@
             <value>.jsp</value>
         </property>  
     </bean>
-    
+    <!-- 配置数据源 -->
+	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.DBUtils">
+	    <property name="driver" value="com.mysql.jdbc.Driver" />
+	    <property name="dbconnect" value="jdbc:mysql://127.0.0.1:3306" />
+	    <property name="username" value="root" />
+	    <property name="password" value="root" />
+	</bean>
 </beans>
