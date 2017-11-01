@@ -16,10 +16,9 @@ import com.google.gson.JsonPrimitive;
 @Service
 public class QueryService {
     
-    public String query(String sql) throws SQLException, IOException, ClassNotFoundException {
+    public String query(String sql, Connection conn) throws SQLException, IOException, ClassNotFoundException {
       JsonObject result = new JsonObject();
-
-      Connection conn = DBUtils.connect();
+      
       Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
       
       ResultSet rs = stmt.executeQuery(sql);

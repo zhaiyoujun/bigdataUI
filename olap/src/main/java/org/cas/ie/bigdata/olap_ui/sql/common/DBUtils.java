@@ -20,15 +20,24 @@ public class DBUtils {
 	  }
 
 	  public static Connection connect() throws IOException, ClassNotFoundException, SQLException {
-	    //return connect(PropertyUtils.get("db"));
+//	    return connect(PropertyUtils.get("db"));
 		Properties p= new Properties();
 		p.setProperty("driver", "com.mysql.jdbc.Driver");
-		p.setProperty("dbconnect", "jdbc:mysql://127.0.0.1:3306/test");
+		p.setProperty("dbconnect", "jdbc:mysql://127.0.0.1:3306");
 		p.setProperty("username", "root");
 		p.setProperty("password", "root");
 		  
-	    return connect(p);
-	    
+	    return connect(p);	    
 	  }
-
+	  
+	  public static Connection connect(String database) throws IOException, ClassNotFoundException, SQLException {
+//		    return connect(PropertyUtils.get("db"));
+			Properties p= new Properties();
+			p.setProperty("driver", "com.mysql.jdbc.Driver");
+			p.setProperty("dbconnect", "jdbc:mysql://127.0.0.1:3306" + "/" + database);
+			p.setProperty("username", "root");
+			p.setProperty("password", "root");
+			  
+		    return connect(p);		    
+		  }
 	}
