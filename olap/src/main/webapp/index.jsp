@@ -8,33 +8,19 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="static/css/olap.css"/>
 </head>
 <body>
- 
-    <center>
-        <h2>Hello World</h2>
-        <h3>
-            <a href="hello?name=zhangsan">点击跳转</a>
-        </h3>
-        <h3>
-            <a href="showdatabases">show databases;</a>
-        </h3>
-        <h3>
-            <a href="showtables?database=test">show tables;</a>
-        </h3>
-        
-    </center>
     <!-- navbar start -->
 	<div class="navbar">
 		<div class="logo">OLAP&nbsp;&nbsp;管理系统</div>
-		<ul class="nav-group">
-			<li class="nav-item-cluster selected">集群</li>
-			<li class="nav-item-data">数据</li>
-		</ul>
-		<div class="refresh">刷新</div>
+		<div class="nav-group">
+			<a class="nav-item-cluster selected" href="index.jsp">集群</a>
+			<a class="nav-item-data" href="showdatabases">数据</a>
+		</div>
+		<div class="refresh" onclick="myrefresh()">刷新</div>
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<p class="title">数据统计</p>
-		<table class="table-statistics">
+		<p class="title">状态统计</p>
+		<table class="table-theme-a">
 			<tbody>
 				<tr>
 					<td>Die</td>
@@ -47,7 +33,7 @@ pageEncoding="UTF-8"%>
 			</tbody>
 		</table>
 		<p class="title">节点列表</p>
-		<table class="table-list">
+		<table class="table-theme-b">
 			<thead>
 				<tr>
 					<th>集群</th>
@@ -69,5 +55,7 @@ pageEncoding="UTF-8"%>
 			</tbody>
 		</table>
 	</div>
+<script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="static/js/olap.js"></script>
 </body>
 </html>

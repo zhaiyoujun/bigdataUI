@@ -3,14 +3,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Spring 4 MVC -HelloWorld</title>
+<title>OLAP管理系统</title>
+<link rel="stylesheet" type="text/css" href="static/css/olap.css"/>
 </head>
 <body>
-    <center>
-        <h2>${sql}</h2>
-        
-        <h2>
-            ${rs}</h2>
-    </center>
+    <!-- navbar start -->
+	<div class="navbar">
+		<div class="logo">OLAP&nbsp;&nbsp;管理系统</div>
+		<div class="nav-group">
+			<a class="nav-item-cluster" href="index.jsp">集群</a>
+			<a class="nav-item-data selected" href="showdatabases">数据</a>
+		</div>
+		<div class="refresh" onclick="myrefresh()">刷新</div>
+	</div>
+	<!-- navbar end -->
+	<div class="content">
+		<a class="back" href="showdatabases">数据统计</a>
+		<table class="table-theme-d" id="olapTableList">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>表名称</th>
+				</tr>
+			</thead>
+			<tbody>
+			
+			</tbody>
+		</table>
+	</div>
+<script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="static/js/olap.js"></script>
+<script>
+$(function(){
+		var rs = ${rs};
+		for (var i=0; i<rs.rows.length; i++)
+		  {
+			$("#olapTableList").append("<tr>"+
+				"<td>"+i+"</td>"+
+				"<td>"+rs.rows[i]+ "</td>"+
+			"</tr>");
+		  }
+})		
+</script>
 </body>
 </html>

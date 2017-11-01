@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
 public class HelloSpringController {
 	
@@ -39,14 +40,13 @@ public class HelloSpringController {
     	
     	Connection conn = DBUtils.connect();
     	
-    	String query = queryService.query(sql, conn);
+    	String rs = queryService.query(sql, conn);
     	
 //    	System.out.println("返回成功"+query);
     	ModelAndView mv = new ModelAndView("showDatabases");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
     	mv.addObject("sql", sql);
-        mv.addObject("rs", query);
-    
+        mv.addObject("rs", rs);
         return mv;        
     }
     
@@ -59,14 +59,13 @@ public class HelloSpringController {
     	
     	Connection conn = DBUtils.connect(name);
     	
-    	String query = queryService.query(sql,conn);
+    	String rs = queryService.query(sql, conn);
     	
 //    	System.out.println("返回成功"+query);
     	ModelAndView mv = new ModelAndView("showTables");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
     	mv.addObject("sql", sql);
-        mv.addObject("rs", query);
-    
+        mv.addObject("rs", rs);
         return mv;        
     }
 }

@@ -4,6 +4,9 @@ html,body,p,ul,li,table,tbody,tr,td{
 	padding:0;
 	font-family:Arial,"Microsoft YaHei";
 }
+a{
+	text-decoration:none;
+}
  ul,li { 
 	list-style:none
  }
@@ -11,11 +14,11 @@ html,body,p,ul,li,table,tbody,tr,td{
 	width:100%;
 	height:56px;
 	background:#343f41;
-	padding:0 20px;
 	font-size:0;
 }
 .logo{
 	width:270px;
+	margin-left:20px;
 	background:url(../img/olap_logo.png) no-repeat;
 	text-indent:66px;
 	line-height:56px;
@@ -30,7 +33,7 @@ html,body,p,ul,li,table,tbody,tr,td{
 	margin-top:3px;
 	float:left;
 }
-.nav-group li{
+.nav-group a{
 	display:inline-block;
 	height:50px;
 	margin-left:20px;
@@ -40,7 +43,7 @@ html,body,p,ul,li,table,tbody,tr,td{
 	color:#fff;
 	font-size:24px;
 }
-.nav-group li:hover{
+.nav-group a:hover{
 	background-color:#009999;
 	cursor:pointer;
 }
@@ -56,7 +59,7 @@ html,body,p,ul,li,table,tbody,tr,td{
 .refresh{
 	height:50px;
 	margin-top:3px;
-	margin-right:60px;
+	margin-right:40px;
 	padding-left:66px;
 	padding-right:20px;
 	float:right;
@@ -70,8 +73,7 @@ html,body,p,ul,li,table,tbody,tr,td{
 	cursor:pointer;
 }
 .content{
-	margin-left:120px;
-	margin-top:40px;
+	margin:40px 120px;
 }
 .title{
 	font-size:22px;
@@ -79,50 +81,91 @@ html,body,p,ul,li,table,tbody,tr,td{
 	text-indent:14px;
 	background:url(../img/olap_icon_title.jpg) left center no-repeat;
 }
-.table-statistics{
+/* 返回上一页 */
+.back{
+	font-size:22px;
+	color:#009899;
+	padding-left:24px;
+	background:url(../img/olap_icon_back.png) left center no-repeat;
+}
+.table-theme-a,.table-theme-b,.table-theme-c,.table-theme-d{
+	width:100%;
 	margin-top:20px;
 	margin-bottom:50px;
 	border-collapse:collapse;
 	border:1px solid #b8b8b8;
 }
-.table-statistics td{
-	width:490px;
+.table-theme-a td{
+	width:50%;
 	line-height:42px;
 	font-size:18px;
 	border:1px solid #b8b8b8;
 	text-indent:20px;
 }
 
-.table-statistics tr:nth-child(odd){background-color:#fff;}
-.table-statistics tr:nth-child(even){background-color:#ebebeb;}
+.table-theme-a tr:nth-child(odd){background-color:#fff;}
+.table-theme-a tr:nth-child(even){background-color:#ebebeb;}
 
-.table-list{
-	margin-top:20px;
-	margin-bottom:50px;
-	border-collapse:collapse;
-	border:1px solid #b8b8b8;
-}
-.table-list td,.table-list th{
+.table-theme-b td,.table-theme-b th,.table-theme-c td,.table-theme-c th,.table-theme-d td,.table-theme-d th{
 	line-height:42px;
-	font-size:18px;
+	font-size:16px;
 	border:1px solid #b8b8b8;
 	text-indent:20px;
+	
+}
+.table-theme-b th,.table-theme-c th,.table-theme-d th{
+	font-size:18px;
 	font-weight:normal;
 	text-align:left;
 }
-.table-list thead{
+.table-theme-b thead,.table-theme-c thead,.table-theme-d thead{
 	background:#353f42;
 	color:#fff;
 }
-.table-list tbody tr:nth-child(odd){background-color:#fff;}
-.table-list tbody tr:nth-child(even){background-color:#ebebeb;}
+.table-theme-b tbody tr:nth-child(odd){background-color:#fff;}
+.table-theme-b tbody tr:nth-child(even){background-color:#ebebeb;}
 
-.table-list tr th:nth-child(1),.table-list tr td:nth-child(1){
-	width:360px;
+.table-theme-c tbody tr:nth-child(odd){background-color:#fff;}
+.table-theme-c tbody tr:nth-child(even){background-color:#ebebeb;}
+
+.table-theme-d tbody tr:nth-child(odd){background-color:#fff;}
+.table-theme-d tbody tr:nth-child(even){background-color:#ebebeb;}
+
+.table-theme-b tr th:nth-child(1),.table-theme-b tr td:nth-child(1){
+	width:50%;
 }
-.table-list tr th:nth-child(2),.table-list tr td:nth-child(2){
-	width:484px;
+.table-theme-b tr th:nth-child(2),.table-theme-b tr td:nth-child(2){
+	
 }
-.table-list tr th:nth-child(3),.table-list tr td:nth-child(3){
-	width:130px;
+.table-theme-b tr th:nth-child(3),.table-theme-b tr td:nth-child(3){
+	width:120px;
+}
+
+.table-theme-c tr th:nth-child(1),.table-theme-c tr td:nth-child(1){
+	width:120px;
+}
+.table-theme-c tr th:nth-child(2),.table-theme-c tr td:nth-child(2){
+
+}
+.table-theme-c tr th:nth-child(3),.table-theme-c tr td:nth-child(3){
+	width:120px;
+}
+.table-theme-c a{
+	display:block;
+	width:66px;
+	text-align:center;
+	text-indent:0;
+	line-height:30px;
+	height:30px;
+	margin:0 auto;
+	border-radius:5px;
+	background:#03969e;
+	color:#fff;
+}
+
+.table-theme-d tr th:nth-child(1),.table-theme-d tr td:nth-child(1){
+	width:120px;
+}
+.table-theme-d tr th:nth-child(2),.table-theme-d tr td:nth-child(2){
+	
 }
