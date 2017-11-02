@@ -1,0 +1,41 @@
+# coding: utf8
+
+CONTROLLER_REP_PORT = 15555
+CONTROLLER_PUB_PORT = 15556
+
+ZMQ_RECV_TIMEOUT = 3000
+AGENT_HEARTBEAT_INTERVAL = 3000
+
+CONTROLLER_IP = "127.0.0.1"
+SELF_SUBNET = "192.168.0.0"
+
+AGENT_TAGS = {}
+AGENT_WORK_DIR = 'work'
+AGENT_CLEAN_WORK_DIR = True
+AGENT_KILL_INTERVAL = 3000
+AGENT_KILL_COUNT = 3
+
+STDOUT_KEEP_BYTES = 1024
+STDERR_KEEP_BYTES = 1024
+REPORT_LOG_KEEP_BYTES = 10000
+LOG_FORMATTER = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s'
+
+CONTROLLER_LOG_FILE = 'logs/controller.log'
+AGENT_LOG_FILE = 'logs/agent.log'
+CLIENT_LOG_FILE = 'logs/client.log'
+WEB_LOG_FILE = 'logs/web.log'
+LOG_FILE_COUNT = 5
+LOG_FILE_MB = 200
+
+TOOLS_DIR = 'testTools'
+
+# 已结束的任务保留的时间,单位（小时）
+TASK_KEEP_HOURS = 24
+
+# MCOS数据单元支持
+MCOS_SUPPORT = True
+MCOS_SERVER_HOST = 'http://127.0.0.1:5000'
+MCOS_TIMEOUT = 3000
+MCOS_DFS_DATA_CELL_RW_ROOT = "/mnt/cli/data"
+MCOS_DFS_DATA_CELL_RO_ROOT = "/mnt/cli/data"
+MCOS_DFS_VISITOR_ROOT = "/mnt/cli/visitor"
