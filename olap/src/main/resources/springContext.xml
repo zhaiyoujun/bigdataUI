@@ -35,6 +35,6 @@
 	    <property name="password" value="root" />
 	</bean>
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils">
-	    <property name="host" value="192.168.2.11,192.168.2.12,192.168.2.13" />
+	    <property name="host" value="node0#192.169.2.10,node1#192.168.2.11,node2#192.168.2.12,node3#192.168.2.13" />
 	</bean>
 </beans>

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-public class HelloSpringController {
+public class olap_uiController {
 	
 	@Autowired
 	ShellService shellService;
@@ -35,11 +35,14 @@ public class HelloSpringController {
 	@RequestMapping("/")
 	public ModelAndView showCluster() throws IOException, InterruptedException {
 		
-		String[] ipSet = shellUtils.getIpSet();
+		ArrayList<String[]> splitResult = shellUtils.splitHost();
+		
+		String[] nodeSet = shellUtils.getNodeSet(splitResult);
+		String[] ipSet = shellUtils.getIpSet(splitResult);
 		
 		ArrayList<String> pingCmdSet = shellUtils.getPingCmdSet(ipSet);
 		
-		String[][] clusterStatus = shellService.getClusterStatus(ipSet, pingCmdSet);
+		String[][] clusterStatus = shellService.getClusterStatus(nodeSet, ipSet, pingCmdSet);
 		
 		HashMap<String, Integer> statisticsResult = shellService.getStatisticsResult(clusterStatus);
 		
@@ -47,8 +50,7 @@ public class HelloSpringController {
 		
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("dieCount", statisticsResult.get("Die"));
-		mv.addObject("livingCount", statisticsResult.get("Living"));
-		
+		mv.addObject("livingCount", statisticsResult.get("Living"));		
 		mv.addObject("cs", cs);
 		
 		return mv;
@@ -57,7 +59,6 @@ public class HelloSpringController {
     @RequestMapping("/showdatabases")
     public ModelAndView shwoDatabases() throws ClassNotFoundException, SQLException, IOException {
      
-//    	System.out.println("返回成功");
     	
     	String sql = "show databases;";
     	
@@ -65,10 +66,8 @@ public class HelloSpringController {
     	
     	String rs = queryService.query(sql, conn);
     	
-//    	System.out.println("返回成功"+query);
     	ModelAndView mv = new ModelAndView("showDatabases");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
-    	mv.addObject("sql", sql);
         mv.addObject("rs", rs);
         return mv;        
     }
@@ -76,7 +75,6 @@ public class HelloSpringController {
     @RequestMapping("/showtables")
     public ModelAndView shwoTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
      
-//    	System.out.println("返回成功");
     	
     	String sql = "show tables;";
     	
@@ -84,10 +82,8 @@ public class HelloSpringController {
     	
     	String rs = queryService.query(sql, conn);
     	
-//    	System.out.println("返回成功"+query);
     	ModelAndView mv = new ModelAndView("showTables");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
-    	mv.addObject("sql", sql);
         mv.addObject("rs", rs);
         return mv;        
     }
