@@ -15,7 +15,7 @@
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
     
     <mvc:annotation-driven />    
-    <mvc:resources mapping="/static/img/**" location="/WEB-INF/static/img/"   />
+    <mvc:resources mapping="/static/img/**" location="/WEB-INF/static/img/"/>
     <!-- 搜索spring控件 -->
     <context:component-scan base-package="org.cas.ie.bigdata.olap_ui"></context:component-scan>
     <!-- 视图页面配置 -->
