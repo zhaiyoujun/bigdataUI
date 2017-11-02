@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,16 +23,16 @@ pageEncoding="UTF-8"%>
 			<tbody>
 				<tr>
 					<td>Die</td>
-					<td>0</td>
+					<td>${dieCount}</td>
 				</tr>
 				<tr>
 					<td>Living</td>
-					<td>23</td>
+					<td>${livingCount}</td>
 				</tr>
 			</tbody>
 		</table>
 		<p class="title">节点列表</p>
-		<table class="table-theme-b">
+		<table class="table-theme-b" id="olapClusterList">
 			<thead>
 				<tr>
 					<th>集群</th>
@@ -41,19 +41,25 @@ pageEncoding="UTF-8"%>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>TASK 1508307629.78 AAsvJ</td>
-					<td>calcpi (1.0.0)</td>
-					<td>FINISHED</td>
-				</tr>
-				<tr>
-					<td>TASK 1508307629.78 AAsvJ</td>
-					<td>calcpi (1.0.0)</td>
-					<td>FINISHED</td>
-				</tr>
+
 			</tbody>
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
+<script>
+$(function(){
+		string cs = [[qwe,qwew],[0,0],[3,3]];
+		for (var i=0; i<cs.length; i++){
+			$("#olapClusterList").append("<tr>"+
+				"<td>"+i+"</td>"+
+				"<td>"+cs[i][0]+ "</td>"+
+				"<td>"+cs[i][1]+ "</td>"+
+			"</tr>");
+			alert("sad",cs.length);
+			console.log("sad",cs.length);
+			}
+		
+})		
+</script>
 </body>
 </html>

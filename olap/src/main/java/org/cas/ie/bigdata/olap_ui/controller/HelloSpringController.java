@@ -32,7 +32,7 @@ public class HelloSpringController {
 	@Autowired
 	DBUtils dbUtils;
 	
-	@RequestMapping("/showcluster")
+	@RequestMapping("")
 	public ModelAndView showCluster() throws IOException, InterruptedException {
 		
 		String[] ipSet = shellUtils.getIpSet();
@@ -43,7 +43,7 @@ public class HelloSpringController {
 		
 		HashMap<String, Integer> statisticsResult = shellService.getStatisticsResult(clusterStatus);
 		
-		ModelAndView mv = new ModelAndView("showCluster");
+		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("dieCount", statisticsResult.get("Die"));
 		mv.addObject("livingCount", statisticsResult.get("Living"));
 		
