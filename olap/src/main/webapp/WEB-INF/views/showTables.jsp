@@ -14,7 +14,6 @@
 			<a class="nav-item-cluster" href="index.jsp">集群</a>
 			<a class="nav-item-data selected" href="showdatabases">数据</a>
 		</div>
-		<div class="refresh" onclick="myrefresh()">刷新</div>
 	</div>
 	<!-- navbar end -->
 	<div class="content">

@@ -15,7 +15,6 @@ pageEncoding="UTF-8"%>
 			<a class="nav-item-cluster selected" href=".">集群</a>
 			<a class="nav-item-data" href="showdatabases">数据</a>
 		</div>
-		<div class="refresh" onclick="myrefresh()">刷新</div>
 	</div>
 	<!-- navbar end -->
 	<div class="content">
@@ -56,6 +55,5 @@ pageEncoding="UTF-8"%>
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="static/js/olap.js"></script>
 </body>
 </html>

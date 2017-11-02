@@ -56,18 +56,6 @@ a{
 .selected{
 	background-color:#009999;
 }
-.refresh{
-	height:50px;
-	margin-top:3px;
-	margin-right:40px;
-	padding-left:66px;
-	padding-right:20px;
-	float:right;
-	line-height:50px;
-	color:#fff;
-	font-size:24px;
-	background:url(../img/title_icon_shuaxin.png) 20px center no-repeat;
-}
 .refresh:hover{
 	background-color:#009999;
 	cursor:pointer;
