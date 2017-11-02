@@ -17,7 +17,7 @@ public class ShellUtils {
 	public ArrayList<String> getPingCmdSet(String[] ipSet) {
 		ArrayList<String> pingCmdSet = new ArrayList<String>();
 		for (int i = 0; i < ipSet.length; i++) {
-			pingCmdSet.add("ping" + " " + ipSet[i]);
+			pingCmdSet.add("ping" + " " + ipSet[i] + " " + "-n 1");
 		}
 		return pingCmdSet;
 	}

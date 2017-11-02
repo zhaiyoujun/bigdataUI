@@ -6,6 +6,10 @@ import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+
 @Service
 public class ShellService {
 	public String[][] getClusterStatus(String[] ipSet, ArrayList<String> pingCmdSet) throws IOException, InterruptedException {
@@ -25,6 +29,24 @@ public class ShellService {
 			}			
 		}
 		return clusterStatus;
+	}
+	
+	public String getClusterStatusJS(String[][] clusterStatus) throws IOException, InterruptedException {
+		int ipCount = clusterStatus.length;
+	    JsonObject result = new JsonObject();
+	    
+	    JsonArray rows = new JsonArray();
+	    for (int i = 0; i < ipCount; i++) {
+	    	JsonArray row = new JsonArray();
+	    	for (int j = 0; j < 2; j++) {
+	    		row.add(new JsonPrimitive(clusterStatus[i][j]));
+	    	}
+	    	rows.add(row);
+	    }
+	    
+	    result.add("rows", rows);
+
+		return result.toString();
 	}
 	
 	public HashMap<String, Integer> getStatisticsResult(String[][] clusterStatus) {

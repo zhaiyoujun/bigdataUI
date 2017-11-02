@@ -43,11 +43,13 @@ public class HelloSpringController {
 		
 		HashMap<String, Integer> statisticsResult = shellService.getStatisticsResult(clusterStatus);
 		
+		String cs = shellService.getClusterStatusJS(clusterStatus);
+		
 		ModelAndView mv = new ModelAndView("showCluster");
 		mv.addObject("dieCount", statisticsResult.get("Die"));
 		mv.addObject("livingCount", statisticsResult.get("Living"));
 		
-		mv.addObject("clusterStatus", clusterStatus);
+		mv.addObject("cs", cs);
 		
 		return mv;
 	}
