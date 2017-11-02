@@ -158,10 +158,9 @@ a:focus, a:hover:{
 	border:1px solid #b8b8b8;
 	text-indent:20px;
 }
-.fixed-table-body thead th{
+.bootstrap-table .table > thead > tr > th{
 	border-radius:0;
 }
-
 .fixed-table-body thead th .th-inner {
 	font-size:18px;
 	font-weight:normal;
@@ -174,9 +173,6 @@ a:focus, a:hover:{
 .agents-table tbody tr:nth-child(odd){background-color:#fff;}
 .agents-table tbody tr:nth-child(even){background-color:#ebebeb;}
 
-.fixed-table-toolbar .columns-right{
-	margin-top:0;
-}
 .btn-add{
 	padding:0 10px;
 	background:#069697;
@@ -191,9 +187,8 @@ a:focus, a:hover:{
 
 .btn-delete{
 	width:54px;
+	padding:4px 8px;
 	font-size:16px;
-	height:26px;
-	line-height:26px;
 	color:#fff;
 	border-radius:5px;
 	border:none;
@@ -201,4 +196,10 @@ a:focus, a:hover:{
 }
 .btn-delete:hover{
 	background:#9c0708;
+}
+.padding68{
+	padding:7px 8px !important;
+}
+.padding68 button{
+	padding:0 8px;
 }

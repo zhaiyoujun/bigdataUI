@@ -19,17 +19,18 @@ $(function () {
 		detailView: false,
 		uniqueId: '__TOOL_NAME__',
 		columns: [{
-			title: "Name",
+			title: "工具名称",
 			field: "__TOOL_NAME__"
 		}, {
-			title: "Version",
+			title: "版本",
 			field: "__TOOL_VERSION__"
 		}, {
-			title: "Path",
+			title: "存储路径",
 			field: "__TOOL_PATH__"
 		}, {
 			title: "",
 			width: 1,
+			class:"padding68",
 			formatter: function (value, row, index) {
 				return '<button class="btn-delete" data-index="' + index + '">删除</button> ';
 			}

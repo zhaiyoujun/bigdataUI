@@ -40,16 +40,16 @@ $(function () {
 		detailView: false,
 		uniqueId: '__AGENT_ID__',
 		columns: [{
-			title: "Agent ID",
+			title: "代理名称",
 			field: "__AGENT_ID__"
 		}, {
 			title: "IP",
 			field: "__AGENT_IP__"
 		}, {
-			title: "Status",
+			title: "状态",
 			field: "__STATUS__"
 		}, {
-			title: "Tag",
+			title: "标签",
 			field: "__AGENT_TAG__",
 			formatter: function (value, row, index) {
 				console.log(value, row, index);
@@ -63,7 +63,7 @@ $(function () {
 				return tags.join('');
 			}
 		}, {
-			title: "Active Time",
+			title: "开始时间",
 			field: "__TIME__",
 			formatter: COMMON.formatTimestamp
 		}]

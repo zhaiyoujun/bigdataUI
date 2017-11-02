@@ -48,7 +48,7 @@ $(function () {
 			detailView: false,
 			uniqueId: '__TASK_ID__',
 			columns: [{
-				title: "Task ID",
+				title: "任务标识",
 				field: "__TASK_ID__",
 				formatter: function (value, row, index) {
 					if (row.__FATHER_ID__)
@@ -58,7 +58,7 @@ $(function () {
 					return value;
 				}
 			}, {
-				title: "Operation",
+				title: "工具",
 				field: "__OPERATION__",
 				formatter: function (value, row, index) {
 					if (row.__OPERATION_VERSION__)
@@ -66,27 +66,27 @@ $(function () {
 					return value;
 				}
 			}, {
-				title: "Status",
+				title: "状态",
 				field: "__STATUS__"
 			}, {
-				title: "Agent ID",
+				title: "任务代理服务",
 				field: "__AGENT_ID__"
 			}, {
-				title: "Exit Code",
+				title: "结束码",
 				field: "__EXIT_CODE__"
 			}, {
-				title: "Killed",
+				title: "被终止",
 				field: "__KILLED__"
 			}, {
-				title: "Submit Time",
+				title: "提交时间",
 				field: "__SUBMIT_TIME__",
 				formatter: COMMON.formatTimestamp
 			}, {
-				title: "Prepare Time",
+				title: "准备时间",
 				field: "__PREPARE_TIME__",
 				formatter: COMMON.formatTimestamp
 			}, {
-				title: "Finish Time",
+				title: "结束时间",
 				field: "__FINISH_TIME__",
 				formatter: COMMON.formatTimestamp
 			}, {
