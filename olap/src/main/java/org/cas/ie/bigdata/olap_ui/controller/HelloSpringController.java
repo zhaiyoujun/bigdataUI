@@ -3,9 +3,13 @@ package org.cas.ie.bigdata.olap_ui.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.cas.ie.bigdata.olap_ui.service.QueryService;
+import org.cas.ie.bigdata.olap_ui.service.ShellService;
 import org.cas.ie.bigdata.olap_ui.sql.common.DBUtils;
+import org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +21,36 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloSpringController {
 	
 	@Autowired
+	ShellService shellService;
+	
+	@Autowired
+	ShellUtils shellUtils;
+	
+	@Autowired
     QueryService queryService;
 	
 	@Autowired
 	DBUtils dbUtils;
+	
+	@RequestMapping("/showcluster")
+	public ModelAndView showCluster() throws IOException, InterruptedException {
+		
+		String[] ipSet = shellUtils.getIpSet();
+		
+		ArrayList<String> pingCmdSet = shellUtils.getPingCmdSet(ipSet);
+		
+		String[][] clusterStatus = shellService.getClusterStatus(ipSet, pingCmdSet);
+		
+		HashMap<String, Integer> statisticsResult = shellService.getStatisticsResult(clusterStatus);
+		
+		ModelAndView mv = new ModelAndView("showCluster");
+		mv.addObject("dieCount", statisticsResult.get("Die"));
+		mv.addObject("livingCount", statisticsResult.get("Living"));
+		
+		mv.addObject("clusterStatus", clusterStatus);
+		
+		return mv;
+	}
 	
     @RequestMapping("/showdatabases")
     public ModelAndView shwoDatabases() throws ClassNotFoundException, SQLException, IOException {

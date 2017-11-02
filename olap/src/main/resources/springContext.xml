@@ -34,4 +34,7 @@
 	    <property name="username" value="root" />
 	    <property name="password" value="root" />
 	</bean>
+	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils">
+	    <property name="host" value="192.168.2.11,192.168.2.12,192.168.2.13" />
+	</bean>
 </beans>
