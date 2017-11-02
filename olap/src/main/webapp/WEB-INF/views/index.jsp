@@ -35,7 +35,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 		<table class="table-theme-b" id="olapClusterList">
 			<thead>
 				<tr>
-					<th>集群</th>
+					<th>节点名称</th>
 					<th>IP</th>
 					<th>状态</th>
 				</tr>
@@ -48,15 +48,13 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
 <script>
 $(function(){
-		string cs = [[qwe,qwew],[0,0],[3,3]];
-		for (var i=0; i<cs.length; i++){
+		var cs = ${cs};
+		for (var i=0; i<cs.rows.length; i++){
 			$("#olapClusterList").append("<tr>"+
-				"<td>"+i+"</td>"+
-				"<td>"+cs[i][0]+ "</td>"+
-				"<td>"+cs[i][1]+ "</td>"+
+				"<td>"+cs.rows[i][0]+ "</td>"+
+				"<td>"+cs.rows[i][1]+ "</td>"+
+				"<td>"+cs.rows[i][2]+ "</td>"+
 			"</tr>");
-			alert("sad",cs.length);
-			console.log("sad",cs.length);
 			}
 		
 })		

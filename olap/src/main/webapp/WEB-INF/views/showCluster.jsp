@@ -9,7 +9,7 @@
 <center>
         <h3>${dieCount}</h3>
         <h3>${livingCount}</h3>
-        <h3>${clusterStatus}</h3>
+        <h3>${cs}</h3>
     </center>
 </body>
 </html>
