@@ -84,6 +84,7 @@ public class HBaseService {
 	}
 	
 	public String[] getTablesByNamespace(String namespace) throws IOException {
+		this.init();
 		TableName[] tables = admin.listTableNamesByNamespace(namespace);
 		String[] tablesBySpace = new String[tables.length];
 		for (int i = 0; i < tables.length; i++) {

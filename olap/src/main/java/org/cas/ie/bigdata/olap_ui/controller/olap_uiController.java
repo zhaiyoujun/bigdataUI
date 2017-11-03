@@ -59,12 +59,9 @@ public class olap_uiController {
     @RequestMapping("/showdatabases")
     public ModelAndView shwoDatabases() throws ClassNotFoundException, SQLException, IOException {
      
+    	String sql = "show databases;";   
     	
-    	String sql = "show databases;";
-    	
-    	Connection conn = dbUtils.connect(null);
-    	
-    	String rs = queryService.query(sql, conn);
+    	String rs = queryService.query(sql, null);
     	
     	ModelAndView mv = new ModelAndView("showDatabases");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
@@ -75,12 +72,9 @@ public class olap_uiController {
     @RequestMapping("/showtables")
     public ModelAndView shwoTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
      
-    	
     	String sql = "show tables;";
-    	
-    	Connection conn = dbUtils.connect(name);
-    	
-    	String rs = queryService.query(sql, conn);
+    
+    	String rs = queryService.query(sql, name);
     	
     	ModelAndView mv = new ModelAndView("showTables");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.cas.ie.bigdata.olap_ui.sql.common.DBUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonArray;
@@ -15,11 +16,22 @@ import com.google.gson.JsonPrimitive;
 
 @Service
 public class QueryService {
+	
+	@Autowired
+	DBUtils dbUtils;
+	
+	private Connection connection = null;
+	
+	private void init(String database) throws ClassNotFoundException, IOException, SQLException {
+		this.connection = dbUtils.connect(database);
+	}
     
-    public String query(String sql, Connection conn) throws SQLException, IOException, ClassNotFoundException {
+    public String query(String sql,String database) throws SQLException, IOException, ClassNotFoundException {
+    	this.init(database);
+    	
       JsonObject result = new JsonObject();
       
-      Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+      Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
       
       ResultSet rs = stmt.executeQuery(sql);
       
@@ -41,7 +53,6 @@ public class QueryService {
       result.add("rows", rows);
 
       stmt.close();
-      conn.close();
 
       return (result.toString());
     }
