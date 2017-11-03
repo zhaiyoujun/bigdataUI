@@ -57,7 +57,13 @@ http://maven.apache.org/maven-v4_0_0.xsd">
     <scope>system</scope>  
     <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>  
 	</dependency>
-    
+
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+      
   </dependencies>
   <build>
     <finalName>hbase_ui</finalName>
