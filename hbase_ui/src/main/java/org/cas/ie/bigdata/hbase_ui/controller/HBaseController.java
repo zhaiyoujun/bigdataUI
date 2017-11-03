@@ -58,17 +58,9 @@ public class HBaseController {
 	@RequestMapping("/listtables")
 	public ModelAndView listTables() throws IOException {
 		
-		Configuration conf = new Configuration();
-        conf.addResource("hbase-site.xml");
-        conf = HBaseConfiguration.create(conf);
-		
-		Connection connection = ConnectionFactory.createConnection(conf);
-		Admin admin = connection.getAdmin();
-		String[][] listTables = hBaseService.getListTables(admin);
+		String[][] listTables = hBaseService.getListTables();
 		String ts = hBaseService.getListTablesJS(listTables);
 		
-        connection.close();
-
 		ModelAndView mv = new ModelAndView("listTables");
 		mv.addObject("ts", ts);
 		return mv;				
@@ -77,19 +69,10 @@ public class HBaseController {
 	@RequestMapping("/listnamespaces")
 	public ModelAndView listNamespaces() throws IOException {
 		
-		Configuration conf = new Configuration();
-        conf.addResource("hbase-site.xml");
-        conf = HBaseConfiguration.create(conf);
-		
-		Connection connection = ConnectionFactory.createConnection(conf);
-		Admin admin = connection.getAdmin();
-		
-		String[][] listTables = hBaseService.getListTables(admin);
+		String[][] listTables = hBaseService.getListTables();
 		HashSet<String> listNamespace = hBaseService.getListNamespace(listTables);
 		String ns = hBaseService.getListNamespaceJS(listNamespace);
 		
-        connection.close();
-
 		ModelAndView mv = new ModelAndView("listNamespaces");
 		mv.addObject("ns", ns);
 		return mv;				
@@ -98,17 +81,9 @@ public class HBaseController {
 	@RequestMapping("/listtablesbynamespace")
 	public ModelAndView listTablesByNamespace(@RequestParam(value = "namespace", required = true)String namespace) throws IOException {
 		
-		Configuration conf = new Configuration();
-        conf.addResource("hbase-site.xml");
-        conf = HBaseConfiguration.create(conf);
-        
-		Connection connection = ConnectionFactory.createConnection(conf);
-		Admin admin = connection.getAdmin();
-		String[] tablesByNamespace = hBaseService.getTablesByNamespace(admin, namespace);
+		String[] tablesByNamespace = hBaseService.getTablesByNamespace(namespace);
 		String tn = hBaseService.getTablesByNamespaceJS(tablesByNamespace);
 		
-        connection.close();
-
 		ModelAndView mv = new ModelAndView("listTablesByNamespace");
 		mv.addObject("tn", tn);
 		return mv;				
