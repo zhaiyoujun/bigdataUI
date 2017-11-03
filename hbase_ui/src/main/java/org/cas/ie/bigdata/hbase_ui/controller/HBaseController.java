@@ -1,6 +1,8 @@
 package org.cas.ie.bigdata.hbase_ui.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import org.apache.hadoop.conf.Configuration;
@@ -9,6 +11,8 @@ import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.cas.ie.bigdata.hbase_ui.service.HBaseService;
+import org.cas.ie.bigdata.hbase_ui.service.ShellService;
+import org.cas.ie.bigdata.hbase_ui.bean.ShellUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +24,36 @@ public class HBaseController {
 	
 	@Autowired
 	HBaseService hBaseService;
+	
+	@Autowired
+	ShellService shellService;
+	
+	@Autowired
+	ShellUtils shellUtils;
+	
+	@RequestMapping("/")
+	public ModelAndView showCluster() throws IOException, InterruptedException {
+		
+		ArrayList<String[]> splitResult = shellUtils.splitHost();
+		
+		String[] nodeSet = shellUtils.getNodeSet(splitResult);
+		String[] ipSet = shellUtils.getIpSet(splitResult);
+		
+		ArrayList<String> pingCmdSet = shellUtils.getPingCmdSet(ipSet);
+		
+		String[][] clusterStatus = shellService.getClusterStatus(nodeSet, ipSet, pingCmdSet);
+		
+		HashMap<String, Integer> statisticsResult = shellService.getStatisticsResult(clusterStatus);
+		
+		String cs = shellService.getClusterStatusJS(clusterStatus);
+		
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("dieCount", statisticsResult.get("Die"));
+		mv.addObject("livingCount", statisticsResult.get("Living"));		
+		mv.addObject("cs", cs);
+		
+		return mv;
+	}
 	
 	@RequestMapping("/listtables")
 	public ModelAndView listTables() throws IOException {
