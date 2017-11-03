@@ -17,7 +17,7 @@ a{
 	font-size:0;
 }
 .logo{
-	width:298px;
+	width:290px;
 	margin-left:20px;
 	background:url(../img/hbase_logo.png) no-repeat;
 	text-indent:66px;
@@ -74,7 +74,7 @@ a{
 	font-size:22px;
 	color:#009899;
 	padding-left:24px;
-	background:url(../img/olap_icon_back.png) left center no-repeat;
+	background:url(../img/hbase_icon_back.png) left center no-repeat;
 }
 .table-theme-a,.table-theme-b,.table-theme-c,.table-theme-d{
 	width:100%;
