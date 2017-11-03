@@ -4,20 +4,16 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>OLAP管理系统</title>
+<title>HBASE管理系统</title>
 <link rel="stylesheet" type="text/css" href="static/css/hbase.css"/>
 </head>
 <body>
-	<h2>Hello World!</h2>
-        <h3><a href="listtablesbynamespace?namespace=default">list tables by namespace</a></h3>
-        <h3><a href="listnamespaces">list name space</a></h3>
- <a href="listtables">listtables</a>
     <!-- navbar start -->
 	<div class="navbar">
 		<div class="logo">HBASE&nbsp;&nbsp;管理系统</div>
 		<div class="nav-group">
 			<a class="nav-item-cluster selected" href=".">集群</a>
-			<a class="nav-item-data" href="showdatabases">数据</a>
+			<a class="nav-item-data" href="listnamespaces">数据</a>
 		</div>
 	</div>
 	<!-- navbar end -->
