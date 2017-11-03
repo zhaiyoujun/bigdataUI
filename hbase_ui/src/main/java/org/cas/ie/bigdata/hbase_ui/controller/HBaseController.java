@@ -23,10 +23,10 @@ public class HBaseController {
 	
 	@RequestMapping("/listtables")
 	public ModelAndView listTables() throws IOException {
-		Configuration conf = HBaseConfiguration.create();
 		
-		conf.set("hbase.zookeeper.quorum", "192.168.2.58");
-		conf.set("hbase.zookeeper.property.clientPort", "2181");
+		Configuration conf = new Configuration();
+        conf.addResource("hbase-site.xml");
+        conf = HBaseConfiguration.create(conf);
 		
 		Connection connection = ConnectionFactory.createConnection(conf);
 		Admin admin = connection.getAdmin();
@@ -42,10 +42,10 @@ public class HBaseController {
 	
 	@RequestMapping("/listnamespaces")
 	public ModelAndView listNamespaces() throws IOException {
-		Configuration conf = HBaseConfiguration.create();
 		
-		conf.set("hbase.zookeeper.quorum", "192.168.2.58");
-		conf.set("hbase.zookeeper.property.clientPort", "2181");
+		Configuration conf = new Configuration();
+        conf.addResource("hbase-site.xml");
+        conf = HBaseConfiguration.create(conf);
 		
 		Connection connection = ConnectionFactory.createConnection(conf);
 		Admin admin = connection.getAdmin();
@@ -63,11 +63,11 @@ public class HBaseController {
 	
 	@RequestMapping("/listtablesbynamespace")
 	public ModelAndView listTablesByNamespace(@RequestParam(value = "namespace", required = true)String namespace) throws IOException {
-		Configuration conf = HBaseConfiguration.create();
 		
-		conf.set("hbase.zookeeper.quorum", "192.168.2.58");
-		conf.set("hbase.zookeeper.property.clientPort", "2181");
-		
+		Configuration conf = new Configuration();
+        conf.addResource("hbase-site.xml");
+        conf = HBaseConfiguration.create(conf);
+        
 		Connection connection = ConnectionFactory.createConnection(conf);
 		Admin admin = connection.getAdmin();
 		String[] tablesByNamespace = hBaseService.getTablesByNamespace(admin, namespace);

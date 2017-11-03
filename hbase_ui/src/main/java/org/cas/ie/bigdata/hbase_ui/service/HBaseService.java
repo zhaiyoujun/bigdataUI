@@ -2,8 +2,6 @@ package org.cas.ie.bigdata.hbase_ui.service;
 
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
@@ -54,7 +52,6 @@ public class HBaseService {
 	}
 	
 	public String getListNamespaceJS(HashSet<String> namespace) {
-		int namespaceCount = namespace.size();
 		
 		JsonObject result = new JsonObject();
 		JsonArray namespaces = new JsonArray();
