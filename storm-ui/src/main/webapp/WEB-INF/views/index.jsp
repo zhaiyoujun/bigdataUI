@@ -8,6 +8,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <link rel="stylesheet" type="text/css" href="static/css/storm.css"/>
 </head>
 <body>
+
     <!-- navbar start -->
 	<div class="navbar">
 		<div class="logo">STORM&nbsp;&nbsp;管理系统</div>
@@ -48,57 +49,6 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function(){
-
-	var url = "http://192.168.2.58:8089/api/v1/cluster/summary";
-	$.ajax({
-		type:"GET",
-		url:url,
-		dataType:"jsonp",
-		jsonp:"callback",
-		timeout:"1000",
-		success:function(data){
-			if(data){
-				$("#stateTotal").html(data.slotsTotal);
-				$("#stateLiving").html(data.slotsUsed);
-			}else{
-				$("#stateTotal").html("出现错误："+data.slotsUsed);
-				$("#stateLiving").html("出现错误："+data.slotsFree);
-			}
-		},
-		error:function(jqXHR){
-			alert("发生错误："+jqXHR.status);
-		}
-	})
-	
-	var url = "http://192.168.2.58:8089/api/v1/supervisor/summary";
-	$.ajax({
-		type:"GET",
-		url:url,
-		dataType:"jsonp",
-		jsonp:"callback",
-		timeout:"1000",
-		success:function(data){
-			
-			for (var i=0; i<data.supervisors.length; i++){
-				var string = data;
-				$("#stormClusterList tbody").append("<tr>"+
-					"<td>"+string.supervisors[i].host+ "</td>"+
-					"<td>"+string.supervisors[i].id+ "</td>"+
-					"<td>"+string.supervisors[i].uptime+ "</td>"+
-					"<td>"+string.supervisors[i].slotsTotal+ "</td>"+
-					"<td>"+string.supervisors[i].slotsUsed+ "</td>"+
-				"</tr>");
-				}
-		},
-		error:function(jqXHR){
-			alert("发生错误："+jqXHR.status);
-		}
-	})	
-	
-	 
-})
-</script>
+<script type="text/javascript" src="static/js/storm.js"></script>
 </body>
 </html>

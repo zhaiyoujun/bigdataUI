@@ -1,17 +1,21 @@
 package org.cas.ie.bigdata.storm_ui.controller;
 
-//import org.cas.ie.bigdata.storm_ui.Utils.IpUtil;
+import org.cas.ie.bigdata.storm_ui.Utils.IpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+
 
 @Controller
 public class HelloSpringController {
 	
-//	@Autowired
-//	IpUtil ipUtil;	
+	@Autowired
+	IpUtil ipUtil;	
 
     @RequestMapping("/")
     public ModelAndView showCluster() {
@@ -26,10 +30,10 @@ public class HelloSpringController {
         return mv;
     }
     
-//    @RequestMapping("/getStorm_Host_Ip")
-//    public String getStorm_Hosp_Ip() {
-//    	return ipUtil.getStorm_Host_Ip();
-//    }
+    @RequestMapping("/getStorm_Host_Ip")
+    public String getStorm_Hosp_Ip() {
+    	return ipUtil.getStorm_Host_Ip();
+    }
 	
 }
 

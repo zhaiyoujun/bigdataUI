@@ -149,10 +149,6 @@ a{
 	background:#03969e;
 	color:#fff;
 }
-
-.table-theme-d tr th:nth-child(1),.table-theme-d tr td:nth-child(1){
-	width:120px;
-}
-.table-theme-d tr th:nth-child(2),.table-theme-d tr td:nth-child(2){
-	
+.fontsize14{
+	font-size:14px !important;
 }

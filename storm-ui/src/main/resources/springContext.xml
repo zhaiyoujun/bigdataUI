@@ -26,5 +26,7 @@
             <value>.jsp</value>
         </property>
     </bean>
-
+    <bean class="org.cas.ie.bigdata.storm_ui.Utils.IpUtil">
+    	<property name="Storm_Host_Ip" value="http://192.168.2.58:8089"></property>
+    </bean>
 </beans>
