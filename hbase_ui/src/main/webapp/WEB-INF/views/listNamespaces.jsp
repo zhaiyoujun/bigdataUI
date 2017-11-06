@@ -34,13 +34,12 @@
 	</div>
 	
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="static/js/olap.js"></script>
 <script>
 $(function(){
 		var ns = ${ns};
 		for (var i=0; i<ns.namespaces.length; i++)
 		  {
-			$("#olapDataList").append("<tr>"+
+			$("#olapDataList tbody").append("<tr>"+
 				"<td>"+i+"</td>"+
 				"<td>"+ns.namespaces[i]+ "</td>"+
 				"<td><a href='listtablesbynamespace?namespace="+ns.namespaces[i]+"'>查看</a></td>"+

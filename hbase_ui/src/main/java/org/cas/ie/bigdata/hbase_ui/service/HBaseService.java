@@ -21,7 +21,7 @@ public class HBaseService {
 	
 	private Connection connection = null;
 	private Admin admin = null;
-	
+	//初始化连接
 	private void init() throws IOException {
 		if (this.connection != null)
 			return;
@@ -33,7 +33,7 @@ public class HBaseService {
 		this.connection = ConnectionFactory.createConnection(conf);
 		this.admin = this.connection.getAdmin();
 	}
-		
+	//不分库查表
 	public String[][] getListTables() throws IOException {
 		this.init();
 		TableName[] tables = admin.listTableNames();
@@ -61,7 +61,7 @@ public class HBaseService {
 		result.add("tables", tables);
 		return result.toString();
 	}
-	
+	//查库
 	public HashSet<String> getListNamespace(String[][] listTables) {
 		HashSet<String> namespace = new HashSet<String>();
 		for (int i = 0; i < listTables.length; i++) {
@@ -84,6 +84,7 @@ public class HBaseService {
 		return result.toString();
 	}
 	
+	//分库查表
 	public TableName[] getTablesByNamespace(String namespace) throws IOException {
 		this.init();
 		TableName[] tables = admin.listTableNamesByNamespace(namespace);
@@ -112,8 +113,7 @@ public class HBaseService {
 		result.add("tablesByNamespace", tablesByNamespace);
 		return result.toString();
 	}	
-	
-
+	//查看表结构
 	public HTableDescriptor getDescribeTable(String table) throws IOException {
 		this.init();
 		TableName tableName = TableName.valueOf(table);
@@ -126,5 +126,5 @@ public class HBaseService {
 		dt.add(new JsonPrimitive(hTableDescriptor.toString()));
 		result.add("dt", dt);
 		return result.toString();
-	}
+	}	
 }

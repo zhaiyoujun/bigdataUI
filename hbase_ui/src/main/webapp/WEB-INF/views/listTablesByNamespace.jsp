@@ -23,7 +23,7 @@
 				<tr>
 					<th>序号</th>
 					<th>表名称</th>
-					<th>操作</th>
+					<th>表结构</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,13 +35,12 @@
 <script>
 $(function(){
 		var tn = ${tn};
-		var ns = ${ns};
 		for (var i=0; i<tn.tablesByNamespace.length; i++)
 		  {
 			$("#olapTableList").append("<tr>"+
 				"<td>"+i+"</td>"+
 				"<td>"+tn.tablesByNamespace[i]+ "</td>"+
-				"<td><a href='describetable?namespace="+ns.namespace+"&table="+tn.tablesByNamespace[i]+"'>查看</a></td>"+
+				"<td><a href='describetable?table="+tn.tablesByNamespace[i]+"'>查看</a></td>"+
 						"</tr>");
 		  }
 })		
