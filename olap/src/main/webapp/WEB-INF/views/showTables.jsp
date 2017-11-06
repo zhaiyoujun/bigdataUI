@@ -18,7 +18,7 @@
 	<!-- navbar end -->
 	<div class="content">
 		<a class="back" href="showdatabases">数据统计</a>
-		<table class="table-theme-d" id="olapTableList">
+		<table class="table-theme-c" id="olapTableList">
 			<thead>
 				<tr>
 					<th>序号</th>
@@ -41,7 +41,7 @@ $(function(){
 			$("#olapTableList tbody").append("<tr>");
 			$("#olapTableList tbody").append("<td>"+i+"</td>");
 			$("#olapTableList tbody").append("<td>"+rs.rows[i]+ "</td>");
-			$("#olapTableList tbody").append("<td><a href='describetable?database="+db.name+"&table="+rs.rows[i]+"'>查看表结构</a></td>");	
+			$("#olapTableList tbody").append("<td><a href='describetable?database="+db.name+"&table="+rs.rows[i]+"'>查看</a></td>");	
 			$("#olapTableList tbody").append("</tr>");
 		  }		
 })		

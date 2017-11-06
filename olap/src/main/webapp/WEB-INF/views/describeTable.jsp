@@ -17,7 +17,7 @@
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<a class="back" href="showdatabases">数据统计</a>
+		<a class="back" onclick="window.history.back()">表统计</a>
 		<table class="table-theme-d" id="olapTableList">
 			<thead>				
 
@@ -28,7 +28,6 @@
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="static/js/olap.js"></script>
 <script>
 $(function(){
 		var dt = ${dt};

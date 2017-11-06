@@ -34,7 +34,6 @@
 	</div>
 	
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="static/js/olap.js"></script>
 <script>
 $(function(){
 		var rs = ${rs};
@@ -46,6 +45,8 @@ $(function(){
 				"<td><a href='showtables?database="+rs.rows[i]+"'>查看</a></td>"+
 			"</tr>");
 		  }
+		
+		
 })		
 </script>
 </body>
