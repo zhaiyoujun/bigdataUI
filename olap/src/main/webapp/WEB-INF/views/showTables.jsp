@@ -32,20 +32,18 @@
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="static/js/olap.js"></script>
 <script>
-
 $(function(){
 		var rs = ${rs};
-		
+		var db = ${db};
 		for (var i=0; i<rs.rows.length; i++)
 		  {
-			$("#olapTableList").append("<tr>"+
-				"<td>"+i+"</td>"+
-				"<td>"+rs.rows[i]+ "</td>"+
-				"<td><a href='describetable?database="+db+"&table="+rs.rows[i+]+"'>查看</a></td>"+
-						"</tr>");
-		  }
+			$("#olapTableList tbody").append("<tr>");
+			$("#olapTableList tbody").append("<td>"+i+"</td>");
+			$("#olapTableList tbody").append("<td>"+rs.rows[i]+ "</td>");
+			$("#olapTableList tbody").append("<td><a href='describetable?database="+db.name+"&table="+rs.rows[i]+"'>查看</a></td>");	
+			$("#olapTableList tbody").append("</tr>");
+		  }		
 })		
 </script>
 </body>

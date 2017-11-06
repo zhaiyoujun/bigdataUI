@@ -19,15 +19,8 @@
 	<div class="content">
 		<a class="back" href="showdatabases">数据统计</a>
 		<table class="table-theme-d" id="olapTableList">
-			<thead>
-				<tr>
-					<th>COLUMN_NAME</th>
-					<th>COLUMN_TYPE</th>
-					<th>IS_NULLABLE</th>
-					<th>COLUMN_KEY</th>
-					<th>COLUMN_DEFAULT</th>
-					<th>EXTRA</th>
-				</tr>
+			<thead>				
+
 			</thead>
 			<tbody>
 			
@@ -41,12 +34,18 @@ $(function(){
 		var dt = ${dt};
 		for (var i=0; i<dt.rows.length; i++)
 		  {
-			$("#olapTableList").append("<tr>");
+			$("#olapTableList tbody").append("<tr>");
 			for (var j=0; j<dt.rows[i].length; j++) {
-				$("#olapTableList").append("<td>"+dt.rows[i][j]+ "</td>");
+				$("#olapTableList tbody").append("<td>"+dt.rows[i][j]+ "</td>");
 			}
-			$("#olapTableList").append("</tr>");
+			$("#olapTableList tbody").append("</tr>");
 		  }
+		$("#olapTableList thead").append("<tr>");
+		for (var i=0; i<dt.columns.length; i++)
+		  {			
+			$("#olapTableList thead").append("<td>"+dt.columns[i]+ "</td>");			
+		  }
+		$("#olapTableList thead").append("</tr>");
 })		
 </script>
 </body>

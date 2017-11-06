@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+
 
 @Controller
 public class olap_uiController {
@@ -75,10 +78,13 @@ public class olap_uiController {
     
     	String rs = queryService.query(sql, name);
     	
+    	JsonObject db = new JsonObject();
+    	db.add("name", new JsonPrimitive(name));
+    	
     	ModelAndView mv = new ModelAndView("showTables");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
         mv.addObject("rs", rs);
-        mv.addObject("db",name);
+        mv.addObject("db",db);		
         return mv;
     }
     
