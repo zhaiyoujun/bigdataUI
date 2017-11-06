@@ -1,7 +1,6 @@
 package org.cas.ie.bigdata.olap_ui.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 
 @Controller
@@ -59,12 +61,9 @@ public class olap_uiController {
     @RequestMapping("/showdatabases")
     public ModelAndView shwoDatabases() throws ClassNotFoundException, SQLException, IOException {
      
+    	String sql = "show databases;";   
     	
-    	String sql = "show databases;";
-    	
-    	Connection conn = dbUtils.connect(null);
-    	
-    	String rs = queryService.query(sql, conn);
+    	String rs = queryService.query(sql, null);
     	
     	ModelAndView mv = new ModelAndView("showDatabases");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
@@ -75,16 +74,32 @@ public class olap_uiController {
     @RequestMapping("/showtables")
     public ModelAndView shwoTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
      
-    	
     	String sql = "show tables;";
+    
+    	String rs = queryService.query(sql, name);
     	
-    	Connection conn = dbUtils.connect(name);
-    	
-    	String rs = queryService.query(sql, conn);
+    	JsonObject db = new JsonObject();
+    	db.add("name", new JsonPrimitive(name));
     	
     	ModelAndView mv = new ModelAndView("showTables");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
         mv.addObject("rs", rs);
-        return mv;        
+        mv.addObject("db",db);		
+        return mv;
+    }
+    
+    @RequestMapping("/describetable")
+    public ModelAndView describeTable(
+    		@RequestParam(value = "database", required = true) String database, 
+    		@RequestParam(value = "table", required = true) String table) throws ClassNotFoundException, SQLException, IOException {
+     
+    	String sql = "describe" + " " + table + ";";
+    
+    	String dt = queryService.query(sql, database);
+    	
+    	ModelAndView mv = new ModelAndView("describeTable");//指定视图
+    	//向视图中添加所要展示或使用的内容，将在页面中使用
+        mv.addObject("dt", dt);
+        return mv;
     }
 }

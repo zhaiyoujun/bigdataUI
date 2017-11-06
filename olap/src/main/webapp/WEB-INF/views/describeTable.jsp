@@ -19,12 +19,8 @@
 	<div class="content">
 		<a class="back" href="showdatabases">数据统计</a>
 		<table class="table-theme-d" id="olapTableList">
-			<thead>
-				<tr>
-					<th>序号</th>
-					<th>表名称</th>
-					<th>操作</th>
-				</tr>
+			<thead>				
+
 			</thead>
 			<tbody>
 			
@@ -32,18 +28,24 @@
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="static/js/olap.js"></script>
 <script>
 $(function(){
-		var rs = ${rs};
-		var db = ${db};
-		for (var i=0; i<rs.rows.length; i++)
+		var dt = ${dt};
+		for (var i=0; i<dt.rows.length; i++)
 		  {
 			$("#olapTableList tbody").append("<tr>");
-			$("#olapTableList tbody").append("<td>"+i+"</td>");
-			$("#olapTableList tbody").append("<td>"+rs.rows[i]+ "</td>");
-			$("#olapTableList tbody").append("<td><a href='describetable?database="+db.name+"&table="+rs.rows[i]+"'>查看表结构</a></td>");	
+			for (var j=0; j<dt.rows[i].length; j++) {
+				$("#olapTableList tbody").append("<td>"+dt.rows[i][j]+ "</td>");
+			}
 			$("#olapTableList tbody").append("</tr>");
-		  }		
+		  }
+		$("#olapTableList thead").append("<tr>");
+		for (var i=0; i<dt.columns.length; i++)
+		  {			
+			$("#olapTableList thead").append("<td>"+dt.columns[i]+ "</td>");			
+		  }
+		$("#olapTableList thead").append("</tr>");
 })		
 </script>
 </body>

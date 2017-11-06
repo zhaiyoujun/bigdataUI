@@ -3,8 +3,12 @@ package org.cas.ie.bigdata.hbase_ui.service;
 import java.io.IOException;
 import java.util.HashSet;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonArray;
@@ -14,7 +18,23 @@ import com.google.gson.JsonPrimitive;
 @Service
 public class HBaseService {
 	
-	public String[][] getListTables(Admin admin) throws IOException {
+	private Connection connection = null;
+	private Admin admin = null;
+	
+	private void init() throws IOException {
+		if (this.connection != null)
+			return;
+		
+		Configuration conf = new Configuration();
+        conf.addResource("hbase-site.xml");
+        conf = HBaseConfiguration.create(conf);
+		
+		this.connection = ConnectionFactory.createConnection(conf);
+		this.admin = this.connection.getAdmin();
+	}
+	
+	public String[][] getListTables() throws IOException {
+		this.init();
 		TableName[] tables = admin.listTableNames();
 		String[][] listTables = new String[tables.length][2];
         for (int i = 0; i < tables.length; i++) {
@@ -63,7 +83,8 @@ public class HBaseService {
 		return result.toString();
 	}
 	
-	public String[] getTablesByNamespace(Admin admin, String namespace) throws IOException {
+	public String[] getTablesByNamespace(String namespace) throws IOException {
+		this.init();
 		TableName[] tables = admin.listTableNamesByNamespace(namespace);
 		String[] tablesBySpace = new String[tables.length];
 		for (int i = 0; i < tables.length; i++) {
