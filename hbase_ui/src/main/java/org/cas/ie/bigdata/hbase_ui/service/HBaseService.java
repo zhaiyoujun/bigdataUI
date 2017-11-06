@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
@@ -32,7 +33,7 @@ public class HBaseService {
 		this.connection = ConnectionFactory.createConnection(conf);
 		this.admin = this.connection.getAdmin();
 	}
-	
+		
 	public String[][] getListTables() throws IOException {
 		this.init();
 		TableName[] tables = admin.listTableNames();
@@ -83,9 +84,15 @@ public class HBaseService {
 		return result.toString();
 	}
 	
-	public String[] getTablesByNamespace(String namespace) throws IOException {
+	public TableName[] getTablesByNamespace(String namespace) throws IOException {
 		this.init();
 		TableName[] tables = admin.listTableNamesByNamespace(namespace);
+		
+		return tables;
+	}	
+	
+	public String[] getTablesByNamespaceString(TableName[] tables) throws IOException {
+		
 		String[] tablesBySpace = new String[tables.length];
 		for (int i = 0; i < tables.length; i++) {
 			tablesBySpace[i] = tables[i].getNameAsString();
@@ -104,6 +111,20 @@ public class HBaseService {
 		}
 		result.add("tablesByNamespace", tablesByNamespace);
 		return result.toString();
+	}	
+	
+
+	public HTableDescriptor getDescribeTable(String table) throws IOException {
+		this.init();
+		TableName tableName = TableName.valueOf(table);
+		return admin.getTableDescriptor(tableName);
 	}
-		
+	
+	public String getDescribeTableJS(HTableDescriptor hTableDescriptor) {
+		JsonObject result = new JsonObject();
+		JsonArray dt = new JsonArray();
+		dt.add(new JsonPrimitive(hTableDescriptor.toString()));
+		result.add("dt", dt);
+		return result.toString();
+	}
 }

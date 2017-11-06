@@ -7,6 +7,8 @@ import java.util.HashSet;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
@@ -18,6 +20,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 @Controller
 public class HBaseController {
@@ -81,12 +86,29 @@ public class HBaseController {
 	@RequestMapping("/listtablesbynamespace")
 	public ModelAndView listTablesByNamespace(@RequestParam(value = "namespace", required = true)String namespace) throws IOException {
 		
-		String[] tablesByNamespace = hBaseService.getTablesByNamespace(namespace);
+		TableName[] tables = hBaseService.getTablesByNamespace(namespace);
+		String[] tablesByNamespace = hBaseService.getTablesByNamespaceString(tables);
 		String tn = hBaseService.getTablesByNamespaceJS(tablesByNamespace);
+		
+		JsonObject ns = new JsonObject();
+		ns.add("namespace", new JsonPrimitive(namespace));
 		
 		ModelAndView mv = new ModelAndView("listTablesByNamespace");
 		mv.addObject("tn", tn);
+		mv.addObject("ns", ns);
 		return mv;				
 	}
 	
+	@RequestMapping("/describetable")
+	public ModelAndView describeTable(
+			@RequestParam(value = "namespace", required = true)String namespace,
+			@RequestParam(value = "table", required = true)String table) throws IOException {
+		
+		HTableDescriptor hTableDescriptor = hBaseService.getDescribeTable(table);
+		String dt = hBaseService.getDescribeTableJS(hTableDescriptor);
+		
+		ModelAndView mv = new ModelAndView("describeTable");
+		mv.addObject("dt", dt);
+		return mv;				
+	}
 }
