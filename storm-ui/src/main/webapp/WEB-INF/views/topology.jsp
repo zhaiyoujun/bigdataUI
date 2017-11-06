@@ -19,7 +19,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 	<!-- navbar end -->
 	<div class="content">
 		<p class="title">拓扑列表</p>
-		<table class="table-theme-b" id="stormTopologyList">
+		<table class="table-theme-c fontsize14" id="stormTopologyList">
 			<thead>
 				<tr>
 					<th>拓扑名称</th>
@@ -29,6 +29,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 					<th>进程数量</th>
 					<th>线程数量</th>
 					<th>任务数量</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -37,35 +38,6 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	var url = "http://192.168.2.58:8089/api/v1/topology/summary";
-	$.ajax({
-		type:"GET",
-		url:url,
-		dataType:"jsonp",
-		jsonp:"callback",
-		timeout:"1000",
-		success:function(data){
-			
-			for (var i=0; i<data.topologies.length; i++){
-				var string = data;
-				$("#stormTopologyList tbody").append("<tr>"+
-					"<td>"+string.topologies[i].name+ "</td>"+
-					"<td>"+string.topologies[i].id+ "</td>"+
-					"<td>"+string.topologies[i].status+ "</td>"+
-					"<td>"+string.topologies[i].uptime+ "</td>"+
-					"<td>"+string.topologies[i].workersTotal+ "</td>"+
-					"<td>"+string.topologies[i].executorsTotal+ "</td>"+
-					"<td>"+string.topologies[i].tasksTotal+ "</td>"+
-				"</tr>");
-				}
-		},
-		error:function(jqXHR){
-			alert("发生错误："+jqXHR.status);
-		}
-	})	
-})
-</script>
+<script type="text/javascript" src="static/js/storm.js"></script>
 </body>
 </html>
