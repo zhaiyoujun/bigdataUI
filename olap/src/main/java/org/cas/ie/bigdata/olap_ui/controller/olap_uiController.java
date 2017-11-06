@@ -1,7 +1,6 @@
 package org.cas.ie.bigdata.olap_ui.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,6 +78,22 @@ public class olap_uiController {
     	ModelAndView mv = new ModelAndView("showTables");//指定视图
     	//向视图中添加所要展示或使用的内容，将在页面中使用
         mv.addObject("rs", rs);
-        return mv;        
+        mv.addObject("db",name);
+        return mv;
+    }
+    
+    @RequestMapping("/describetable")
+    public ModelAndView describeTable(
+    		@RequestParam(value = "database", required = true) String database, 
+    		@RequestParam(value = "table", required = true) String table) throws ClassNotFoundException, SQLException, IOException {
+     
+    	String sql = "describe" + " " + table + ";";
+    
+    	String dt = queryService.query(sql, database);
+    	
+    	ModelAndView mv = new ModelAndView("describeTable");//指定视图
+    	//向视图中添加所要展示或使用的内容，将在页面中使用
+        mv.addObject("dt", dt);
+        return mv;
     }
 }

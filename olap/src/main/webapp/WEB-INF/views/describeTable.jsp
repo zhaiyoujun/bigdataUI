@@ -21,9 +21,12 @@
 		<table class="table-theme-d" id="olapTableList">
 			<thead>
 				<tr>
-					<th>序号</th>
-					<th>表名称</th>
-					<th>操作</th>
+					<th>COLUMN_NAME</th>
+					<th>COLUMN_TYPE</th>
+					<th>IS_NULLABLE</th>
+					<th>COLUMN_KEY</th>
+					<th>COLUMN_DEFAULT</th>
+					<th>EXTRA</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,17 +37,15 @@
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="static/js/olap.js"></script>
 <script>
-
 $(function(){
-		var rs = ${rs};
-		
-		for (var i=0; i<rs.rows.length; i++)
+		var dt = ${dt};
+		for (var i=0; i<dt.rows.length; i++)
 		  {
-			$("#olapTableList").append("<tr>"+
-				"<td>"+i+"</td>"+
-				"<td>"+rs.rows[i]+ "</td>"+
-				"<td><a href='describetable?database="+db+"&table="+rs.rows[i+]+"'>查看</a></td>"+
-						"</tr>");
+			$("#olapTableList").append("<tr>");
+			for (var j=0; j<dt.rows[i].length; j++) {
+				$("#olapTableList").append("<td>"+dt.rows[i][j]+ "</td>");
+			}
+			$("#olapTableList").append("</tr>");
 		  }
 })		
 </script>

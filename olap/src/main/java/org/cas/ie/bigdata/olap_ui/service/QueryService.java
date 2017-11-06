@@ -29,31 +29,31 @@ public class QueryService {
     public String query(String sql,String database) throws SQLException, IOException, ClassNotFoundException {
     	this.init(database);
     	
-      JsonObject result = new JsonObject();
+    	JsonObject result = new JsonObject();
+    	
+    	Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
       
-      Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-      
-      ResultSet rs = stmt.executeQuery(sql);
-      
-      JsonArray columnNames = new JsonArray();
-      for (int i = 1; i <= rs.getMetaData().getColumnCount(); ++i) {
-        columnNames.add(new JsonPrimitive(rs.getMetaData().getColumnName(i)));
-      }
-      result.add("columns", columnNames);
-
-      JsonArray rows = new JsonArray();
-      for (int rid = 0; rs.next(); ++rid) {
-        JsonArray row = new JsonArray();
-        for (int i = 1; i <= rs.getMetaData().getColumnCount(); ++i) {
-          row.add(new JsonPrimitive(String.valueOf(rs.getObject(i))));
-        }
-        rows.add(row);
-      }
-
-      result.add("rows", rows);
-
-      stmt.close();
-
-      return (result.toString());
-    }
+    	ResultSet rs = stmt.executeQuery(sql);
+    	
+    	JsonArray columnNames = new JsonArray();
+    	for (int i = 1; i <= rs.getMetaData().getColumnCount(); ++i) {
+    		columnNames.add(new JsonPrimitive(rs.getMetaData().getColumnName(i)));
+    	}
+    	result.add("columns", columnNames);
+    	
+    	JsonArray rows = new JsonArray();
+    	for (int rid = 0; rs.next(); ++rid) {
+    		JsonArray row = new JsonArray();
+    		for (int i = 1; i <= rs.getMetaData().getColumnCount(); ++i) {
+    			row.add(new JsonPrimitive(String.valueOf(rs.getObject(i))));
+    		}
+    		rows.add(row);
+    	}
+    	
+    	result.add("rows", rows);
+    	
+    	stmt.close();
+    	
+    	return (result.toString());
+    	}
 }
