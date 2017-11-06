@@ -1,5 +1,5 @@
 $(function(){
-	var STORM_UI_HOST = "http://192.168.2.58:8089";
+	var STORM_UI_HOST = "${getStorm_Host_Ip}";
 
 	$.ajax({
 		type:"GET",

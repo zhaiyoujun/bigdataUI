@@ -28,7 +28,7 @@
     </bean>
     <bean class="org.cas.ie.bigdata.storm_ui.Utils">
     	<property name="Storm_Host_Ip">
-    		<value></value>
+    		<value>http://192.168.2.58:8089</value>
     </property>
     </bean>
 </beans>

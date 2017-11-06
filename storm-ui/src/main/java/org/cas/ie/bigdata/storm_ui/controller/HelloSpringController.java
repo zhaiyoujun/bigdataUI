@@ -21,14 +21,8 @@ public class HelloSpringController {
 
     @RequestMapping("/")
     public ModelAndView showCluster() {
-//    	String string = "http://192.168.2.58:8089";
-//    	JsonObject jsonObject = new JsonObject();
-//    	JsonArray jsonArray = new JsonArray();
-//    	jsonArray.add(new JsonPrimitive(string));
-//    	jsonObject.add("ip", jsonArray);
         ModelAndView mv = new ModelAndView("index");//指定视图
 //向视图中添加所要展示或使用的内容，将在页面中使用
-        mv.addObject("ip", "http://192.168.2.58:8089");
         return mv;
     }
     @RequestMapping("/topology")
