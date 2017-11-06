@@ -41,7 +41,7 @@ $(function(){
 			$("#olapTableList tbody").append("<tr>");
 			$("#olapTableList tbody").append("<td>"+i+"</td>");
 			$("#olapTableList tbody").append("<td>"+rs.rows[i]+ "</td>");
-			$("#olapTableList tbody").append("<td><a href='describetable?database="+db.name+"&table="+rs.rows[i]+"'>查看</a></td>");	
+			$("#olapTableList tbody").append("<td><a href='describetable?database="+db.name+"&table="+rs.rows[i]+"'>查看表结构</a></td>");	
 			$("#olapTableList tbody").append("</tr>");
 		  }		
 })		
