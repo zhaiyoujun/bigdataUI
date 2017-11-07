@@ -7,7 +7,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <title>STORM管理系统</title>
 <link rel="stylesheet" type="text/css" href="static/css/storm.css"/>
 </head>
-<body>
+<body data-storm-ui="${ip}">
 
     <!-- navbar start -->
 	<div class="navbar">
@@ -48,6 +48,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 			</tbody>
 		</table>
 	</div>
+
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="static/js/storm.js"></script>
 </body>

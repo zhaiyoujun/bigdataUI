@@ -1,6 +1,5 @@
 $(function(){
-	var STORM_UI_HOST = ${getStorm_Host_Ip};
-	console.log(STORM_UI_HOST);
+	var STORM_UI_HOST = $('body').data('storm-ui');
 	$.ajax({
 		type:"GET",
 		url:STORM_UI_HOST + "/api/v1/cluster/summary",
@@ -8,6 +7,7 @@ $(function(){
 		jsonp:"callback",
 		timeout:"1000",
 		success:function(data){
+			console.log("1",STORM_UI_HOST);
 			if(data){
 				$("#stateTotal").html(data.slotsTotal);
 				$("#stateLiving").html(data.slotsUsed);
@@ -28,7 +28,7 @@ $(function(){
 		jsonp:"callback",
 		timeout:"1000",
 		success:function(data){
-			
+			console.log("2",STORM_UI_HOST);
 			for (var i=0; i<data.supervisors.length; i++){
 				var string = data;
 				$("#stormClusterList tbody").append("<tr>"+
@@ -53,23 +53,27 @@ $(function(){
 		jsonp:"callback",
 		timeout:"1000",
 		success:function(data){
-			
+			console.log("3",STORM_UI_HOST);
 			for (var i=0; i<data.topologies.length; i++){
+				
 				var string = data;
 				$("#stormTopologyList tbody").append("<tr>"+
 					"<td>"+string.topologies[i].name+ "</td>"+
-					"<td>"+string.topologies[i].id+ "</td>"+
 					"<td>"+string.topologies[i].status+ "</td>"+
 					"<td>"+string.topologies[i].uptime+ "</td>"+
 					"<td>"+string.topologies[i].workersTotal+ "</td>"+
 					"<td>"+string.topologies[i].executorsTotal+ "</td>"+
 					"<td>"+string.topologies[i].tasksTotal+ "</td>"+
-					"<td><a href=''>查看</a></td>"+
+					"<td><a href='topologydetails?id="+string.topologies[i].id+"&sys="+string.topologies[i].status+"' onclock='saveValue'>查看</a></td>"+
 				"</tr>");
+				
+				
 				}
 		},
 		error:function(jqXHR){
 			alert("发生错误："+jqXHR.status);
 		}
 	})	
+	
+
 })

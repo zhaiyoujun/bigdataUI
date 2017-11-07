@@ -19,16 +19,11 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 	<!-- navbar end -->
 	<div class="content">
 		<p class="title">拓扑列表</p>
-		<table class="table-theme-c" id="stormTopologyList">
+		<table class="table-theme-c" id="stormTopologyDetails">
 			<thead>
 				<tr>
 					<th>拓扑名称</th>
 					<th>状态</th>
-					<th>运行时间</th>
-					<th>进程数量</th>
-					<th>线程数量</th>
-					<th>任务数量</th>
-					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,5 +33,6 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="static/js/storm.js"></script>
+<script type="text/javascript" src="static/js/storm-topology-details.js"></script>
 </body>
 </html>
