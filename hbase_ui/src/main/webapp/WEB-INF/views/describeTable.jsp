@@ -45,9 +45,7 @@
 $(function(){
 	
 		var dt = ${dt};
-		var dt = ${[name,hahha]};
-		var ab = dt.dt[0];
-		console.log(ab);
+		console.log(dt.dt);
 		
 		  for (var i=0; i<dt.dt.length; i++){
 			 $("#hbaseTableList tbody").append("<tr>"+
