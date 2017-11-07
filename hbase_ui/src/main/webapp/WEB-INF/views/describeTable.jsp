@@ -47,9 +47,12 @@ $(function(){
 		var dt = ${dt};
 		console.log(dt.rows);
 		
-		  for (var i=0; i<dt.dt.length; i++){
+		  for (var i=0; i<dt.rows.length; i++){
 			 $("#hbaseTableList tbody").append("<tr>"+
-				"<td>"+dt.dt[i]+ "</td>"+
+				"<td>"+dt.rows[i]+ "</td>"+
+				
+				
+				
 			"</tr>");
 			} 
 })		
