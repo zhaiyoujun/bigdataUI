@@ -159,6 +159,8 @@ public class HBaseService {
 		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors) {
 			JsonArray row = new JsonArray();
 			
+			rows.add(new JsonPrimitive(hColumnDescriptor.getNameAsString()));
+			
 			Map<ImmutableBytesWritable, ImmutableBytesWritable> map = hColumnDescriptor.getValues();
 			
 			for (ImmutableBytesWritable key : map.keySet()) {
