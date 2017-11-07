@@ -18,12 +18,15 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<p class="title">拓扑列表</p>
+		<a class="back" href="topology">拓扑列表</a>
 		<table class="table-theme-c" id="stormTopologyDetails">
 			<thead>
 				<tr>
-					<th>拓扑名称</th>
-					<th>状态</th>
+					<th>时间</th>
+					<th>发送数</th>
+					<th>提交数</th>
+					<th>确认数</th>
+					<th>失败数</th>
 				</tr>
 			</thead>
 			<tbody>

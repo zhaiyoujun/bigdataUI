@@ -17,28 +17,41 @@
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<a class="back" onclick="window.history.back()">表统计</a>
+		<a class="back" onclick="window.history.back()">表列表</a>
 		<table class="table-theme-d" id="hbaseTableList">
 			<thead>				
-
+				<tr>
+					<th>列簇</th>
+					<th>属性</th>
+				</tr>
 			</thead>
 			<tbody>
-			
+				<tr>
+					<td>NAME</td>
+					<td>
+						<ul>
+							<li>12</li>
+							<li>123</li>
+							<li>123</li>
+							<li>123</li>
+						</ul>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
 <script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
 <script>
 $(function(){
+	
 		var dt = ${dt};
-		console.log("dt",dt);
-		/* for (var i=0; i<dt.dt.length; i++){
-			$("#hbaseTableList").append("<tr>"+
-				"<td>"+dt.dt.+ "</td>"+
-				"<td>"+dt.dt.+ "</td>"+
-				"<td>"+dt.dt.+ "</td>"+
+		console.log(dt.dt);
+		
+		  for (var i=0; i<dt.dt.length; i++){
+			 $("#hbaseTableList tbody").append("<tr>"+
+				"<td>"+dt.dt[i]+ "</td>"+
 			"</tr>");
-			} */
+			} 
 })		
 </script>
 </body>

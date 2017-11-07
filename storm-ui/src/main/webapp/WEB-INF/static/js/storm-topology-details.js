@@ -18,7 +18,16 @@ $(function(){
 			jsonp:"callback",
 			timeout:"1000",
 			success:function(data){
-				
+				console.log(data.topologyStats);
+				for (var i=0; i<data.topologyStats.length; i++){
+					$("#stormTopologyDetails").append("<tr>"+
+						"<td>"+data.topologyStats[i].windowPretty+ "</td>"+
+						"<td>"+data.topologyStats[i].window+ "</td>"+
+						"<td>"+data.topologyStats[i].emitted+ "</td>"+
+						"<td>"+data.topologyStats[i].transferred+ "</td>"+
+						"<td>"+data.topologyStats[i].completeLatency+ "</td>"+
+					"</tr>");
+					}
 				
 			},
 			error:function(jqXHR){

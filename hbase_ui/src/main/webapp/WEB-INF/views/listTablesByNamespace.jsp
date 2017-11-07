@@ -17,13 +17,13 @@
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<a class="back" href="listnamespaces">数据统计</a>
-		<table class="table-theme-d" id="olapTableList">
+		<a class="back" href="listnamespaces">库列表</a>
+		<table class="table-theme-c" id="olapTableList">
 			<thead>
 				<tr>
 					<th>序号</th>
 					<th>表名称</th>
-					<th>表结构</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
