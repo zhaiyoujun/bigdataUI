@@ -2,6 +2,7 @@ package org.cas.ie.bigdata.hbase_ui.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -84,7 +85,7 @@ public class HBaseController {
 //		HTableDescriptor hTableDescriptor = hBaseService.getDescribeTable(table);
 //		String dt = hBaseService.getDescribeTableJS(hTableDescriptor);
 		
-		HColumnDescriptor[] hColumnDescriptors = hBaseService.getDescribeTable(table);
+		Collection<HColumnDescriptor> hColumnDescriptors = hBaseService.getDescribeTable(table);
 		String dt = hBaseService.getDescribeTableJS(hColumnDescriptors);
 		
 		ModelAndView mv = new ModelAndView("describeTable");

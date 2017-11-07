@@ -119,7 +119,7 @@ public class HBaseService {
 		return result.toString();
 	}	
 	//查看表结构
-	public HColumnDescriptor[] getDescribeTable(String table) throws IOException {
+	public Collection<HColumnDescriptor> getDescribeTable(String table) throws IOException {
 		this.init();
 		TableName tableName = TableName.valueOf(table);
 		HTableDescriptor hTableDescriptor = admin.getTableDescriptor(tableName);
@@ -146,20 +146,30 @@ public class HBaseService {
 		System.out.println("111111111111111111" + hColumnDescriptors.toString());
 		System.out.println("222222222222222222" + hColumnDescriptors2);
 		
-		return hColumnDescriptors;
+		return hColumnDescriptors2;
 	}
 	
-	public String getDescribeTableJS(HColumnDescriptor[] hColumnDescriptors) {
+	public String getDescribeTableJS(Collection<HColumnDescriptor> hColumnDescriptors) {
 		JsonObject result = new JsonObject();
-		JsonArray dt = new JsonArray();
+		JsonArray rows = new JsonArray();
 //		dt.add(new JsonPrimitive(hTableDescriptor.toString()));
 //		result.add("dt", dt);
 //		return result.toString();
 		
-		for (int i = 0; i < hColumnDescriptors.length; i++) {
-			dt.add(new JsonPrimitive(hColumnDescriptors[i].toString()));
+		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors) {
+			JsonArray row = new JsonArray();
+			
+			Map<ImmutableBytesWritable, ImmutableBytesWritable> map = hColumnDescriptor.getValues();
+			
+			for (ImmutableBytesWritable key : map.keySet()) {
+				JsonArray ja = new JsonArray();
+				ja.add(new JsonPrimitive(Bytes.toString(key.get())));
+				ja.add(new JsonPrimitive(Bytes.toString(map.get(key).get())));	
+				row.add(ja);
+			}
+			rows.add(row);			
 		}
-		result.add("dt", dt);
+		result.add("rows", rows);
 		return result.toString();
 	}	
 }
