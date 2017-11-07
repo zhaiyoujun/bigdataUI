@@ -34,8 +34,8 @@ public class ShellService {
 	
 	public String getClusterStatusJS(String[][] clusterStatus) throws IOException, InterruptedException {
 		int ipCount = clusterStatus.length;
-	    JsonObject result = new JsonObject();
-	    
+		
+	    JsonObject result = new JsonObject();	    
 	    JsonArray rows = new JsonArray();
 	    for (int i = 0; i < ipCount; i++) {
 	    	JsonArray row = new JsonArray();

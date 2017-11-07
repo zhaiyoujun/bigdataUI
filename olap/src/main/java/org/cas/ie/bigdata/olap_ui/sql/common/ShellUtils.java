@@ -42,6 +42,5 @@ public class ShellUtils {
 			pingCmdSet.add("ping" + " " + ipSet[i] + " " + "-n 1 -w 100");
 		}
 		return pingCmdSet;
-	}
-	
+	}	
 }

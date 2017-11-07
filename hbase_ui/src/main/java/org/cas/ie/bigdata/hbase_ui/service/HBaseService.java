@@ -1,10 +1,12 @@
 package org.cas.ie.bigdata.hbase_ui.service;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashSet;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
@@ -114,16 +116,39 @@ public class HBaseService {
 		return result.toString();
 	}	
 	//查看表结构
-	public HTableDescriptor getDescribeTable(String table) throws IOException {
+	public HColumnDescriptor[] getDescribeTable(String table) throws IOException {
 		this.init();
 		TableName tableName = TableName.valueOf(table);
-		return admin.getTableDescriptor(tableName);
+		HTableDescriptor hTableDescriptor = admin.getTableDescriptor(tableName);
+		
+		HColumnDescriptor[] hColumnDescriptors = hTableDescriptor.getColumnFamilies();
+		Collection<HColumnDescriptor> hColumnDescriptors2 = hTableDescriptor.getFamilies();
+		
+		for (int i = 0; i < hColumnDescriptors.length; i++) {
+			System.out.println(hColumnDescriptors[i].toString());
+		}
+		System.out.println();
+		
+		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors2) {
+			System.out.println(hColumnDescriptor.toString());
+		}
+		
+		System.out.println("111111111111111111" + hColumnDescriptors.toString());
+		System.out.println("222222222222222222" + hColumnDescriptors2);
+		
+		return hColumnDescriptors;
 	}
 	
-	public String getDescribeTableJS(HTableDescriptor hTableDescriptor) {
+	public String getDescribeTableJS(HColumnDescriptor[] hColumnDescriptors) {
 		JsonObject result = new JsonObject();
 		JsonArray dt = new JsonArray();
-		dt.add(new JsonPrimitive(hTableDescriptor.toString()));
+//		dt.add(new JsonPrimitive(hTableDescriptor.toString()));
+//		result.add("dt", dt);
+//		return result.toString();
+		
+		for (int i = 0; i < hColumnDescriptors.length; i++) {
+			dt.add(new JsonPrimitive(hColumnDescriptors[i].toString()));
+		}
 		result.add("dt", dt);
 		return result.toString();
 	}	

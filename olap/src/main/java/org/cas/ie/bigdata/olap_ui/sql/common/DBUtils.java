@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class DBUtils {
 
 	private String driver = "com.mysql.jdbc.Driver";
@@ -29,9 +28,8 @@ public class DBUtils {
 		this.password = password;
 	}
 	
-	
-	  public Connection connect(String database) throws IOException, ClassNotFoundException, SQLException {
-	    Class.forName(this.driver);
+	public Connection connect(String database) throws IOException, ClassNotFoundException, SQLException {
+		Class.forName(this.driver);
 	    String dbconn = this.dbconnect;
 	    if (database != null)
 	    	dbconn = dbconn + '/' + database;
@@ -40,6 +38,5 @@ public class DBUtils {
 	      this.username,
 	      this.password
 	    );
-	  }
-
 	}
+}
