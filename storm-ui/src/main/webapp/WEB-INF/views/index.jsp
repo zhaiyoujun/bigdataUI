@@ -6,6 +6,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>STORM管理系统</title>
 <link rel="stylesheet" type="text/css" href="static/css/storm.css"/>
+<link rel="shortcut icon" href="static/img/favicon.ico" />
 </head>
 <body data-storm-ui="${ip}">
 
@@ -13,13 +14,13 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 	<div class="navbar">
 		<div class="logo">STORM&nbsp;&nbsp;管理系统</div>
 		<div class="nav-group">
-			<a class="nav-item-cluster selected" href=".">集群</a>
-			<a class="nav-item-topology" href="topology">拓扑</a>
+			<a class="nav-item-cluster selected" href=".">流处理集群管理</a>
+			<a class="nav-item-topology" href="topology">流式拓扑管理</a>
 		</div>
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<p class="title">插槽统计</p>
+		<p class="title">全局状态查看</p>
 		<table class="table-theme-a">
 			<tbody>
 				<tr>
@@ -32,7 +33,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 				</tr>
 			</tbody>
 		</table>
-		<p class="title">节点列表</p>
+		<p class="title">节点查看</p>
 		<table class="table-theme-b" id="stormClusterList">
 			<thead>
 				<tr>

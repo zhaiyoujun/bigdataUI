@@ -6,14 +6,15 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>STORM管理系统</title>
 <link rel="stylesheet" type="text/css" href="static/css/storm.css"/>
+<link rel="shortcut icon" href="static/img/favicon.ico" />
 </head>
 <body data-storm-ui="${ip}">
     <!-- navbar start -->
 	<div class="navbar">
 		<div class="logo">STORM&nbsp;&nbsp;管理系统</div>
 		<div class="nav-group">
-			<a class="nav-item-cluster" href=".">集群</a>
-			<a class="nav-item-topology selected" href="topology">拓扑</a>
+			<a class="nav-item-cluster" href=".">流处理集群管理</a>
+			<a class="nav-item-topology selected" href="topology">流式拓扑管理</a>
 		</div>
 	</div>
 	<!-- navbar end -->

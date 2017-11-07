@@ -58,7 +58,7 @@ public class olap_uiController {
 	}
 	
     @RequestMapping("/showdatabases")
-    public ModelAndView shwoDatabases() throws ClassNotFoundException, SQLException, IOException {
+    public ModelAndView showDatabases() throws ClassNotFoundException, SQLException, IOException {
      
     	String sql = "show databases;";   
     	
@@ -71,7 +71,7 @@ public class olap_uiController {
     }
     
     @RequestMapping("/showtables")
-    public ModelAndView shwoTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
+    public ModelAndView showTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
      
     	String sql = "show tables;";
     

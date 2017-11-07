@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LLTS 管理系统 {% block title %}{% endblock %}</title>
+	<link type="text/css" rel="stylesheet" href="/static/3rd/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="/static/3rd/bootstrap-table/1.11.0/css/bootstrap-table.css">
+	<link type="text/css" rel="stylesheet" href="/static/3rd/formvalidation/0.6.2/css/formValidation.css">
+	<link type="text/css" rel="stylesheet" href="/static/3rd/multiple-select/1.2.1/multiple-select.css">
+	<link type="text/css" rel="stylesheet" href="/static/css/llts.css">
+	<link rel="shortcut icon" href="/static/img/favicon.ico" />
+</head>
+
+<body>
+	<div class="llts-navbar">
+		<div class="logo">LLTS&nbsp;&nbsp;管理系统</div>
+		<div class="nav-group">
+			<a href="/task" data-id="task">任务管理</a>
+			<a href="/agent" data-id="agent">计算单元管理</a>
+			<a href="/tool" data-id="tool">工具管理</a>
+		</div>
+		<!-- <a href="javascript:;" data-id="refresh"><span class="glyphicon glyphicon-refresh"></span> Refresh</a> -->
+	</div>
+
+
+<div class="container-fluid top-page">
+	{% block content %}{% endblock %}
+</div>
+
+<script src="/static/3rd/jquery/1.11.3/jquery.min.js"></script>
+<script src="/static/3rd/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="/static/3rd/bootstrap-table/1.11.0/js/bootstrap-table.js"></script>
+<script src="/static/3rd/bootstrap-table/1.11.0/js/bootstrap-table-editable.js"></script>
+<script src="/static/3rd/formvalidation/0.6.2/js/formValidation.js"></script>
+<script src="/static/3rd/formvalidation/0.6.2/js/framework/bootstrap.min.js"></script>
+<script src="/static/3rd/formvalidation/0.6.2/language/zh_CN.js"></script>
+<script src="/static/3rd/layer/layer.js"></script>
+<script src="/static/3rd/multiple-select/1.2.1/multiple-select.js"></script>
+<script src="/static/js/common.js"></script>
+{% block control %}{% endblock %}
+</body>
+
+</html>

@@ -5,14 +5,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>HBASE管理系统</title>
 <link rel="stylesheet" type="text/css" href="static/css/hbase.css"/>
+<link rel="shortcut icon" href="static/img/favicon.ico" />
 </head>
 <body>
     <!-- navbar start -->
 	<div class="navbar">
 		<div class="logo">HBASE&nbsp;&nbsp;管理系统</div>
 		<div class="nav-group">
-			<a class="nav-item-cluster" href=".">集群</a>
-			<a class="nav-item-data selected" href="listnamespaces">数据</a>
+			<a class="nav-item-cluster" href=".">存储集群管理</a>
+			<a class="nav-item-data selected" href="listnamespaces">数据库管理</a>
 		</div>
 	</div>
 	<!-- navbar end -->

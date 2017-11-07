@@ -5,19 +5,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>OLAP管理系统</title>
 <link rel="stylesheet" type="text/css" href="static/css/olap.css"/>
+<link rel="shortcut icon" href="static/img/favicon.ico" />
 </head>
 <body>
     <!-- navbar start -->
 	<div class="navbar">
 		<div class="logo">OLAP&nbsp;&nbsp;管理系统</div>
 		<div class="nav-group">
-			<a class="nav-item-cluster" href=".">集群</a>
-			<a class="nav-item-data selected" href="showdatabases">数据</a>
+			<a class="nav-item-cluster" href=".">数据库集群管理</a>
+			<a class="nav-item-data selected" href="showdatabases">数据库管理</a>
 		</div>
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<p class="title">表列表
+		<p class="title">表查看
 			<a onclick="window.history.back()" class="back">返回</a>
 		</p>
 		<table class="table-theme-c" id="olapTableList">
