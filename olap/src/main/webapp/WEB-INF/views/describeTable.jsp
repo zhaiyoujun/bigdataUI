@@ -17,7 +17,9 @@
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<a class="back" onclick="window.history.back()">表统计</a>
+		<p class="title">表详情
+			<a onclick="window.history.back()" class="back">返回</a>
+		</p>
 		<table class="table-theme-d" id="olapTableList">
 			<thead>				
 

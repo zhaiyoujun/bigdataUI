@@ -72,10 +72,12 @@ a{
 }
 /* 返回上一页 */
 .back{
+	float:right;
 	font-size:22px;
 	color:#009899;
 	padding-left:24px;
 	background:url(../img/olap_icon_back.png) left center no-repeat;
+	cursor:pointer;
 }
 .table-theme-a,.table-theme-b,.table-theme-c,.table-theme-d{
 	width:100%;

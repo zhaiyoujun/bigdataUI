@@ -18,7 +18,7 @@
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<p class="title">数据统计</p>
+		<p class="title">库列表</p>
 		<table class="table-theme-c" id="olapDataList">
 			<thead>
 				<tr>

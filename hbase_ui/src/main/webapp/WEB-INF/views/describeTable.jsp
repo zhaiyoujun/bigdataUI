@@ -12,13 +12,15 @@
 		<div class="logo">HBASE&nbsp;&nbsp;管理系统</div>
 		<div class="nav-group">
 			<a class="nav-item-cluster" href=".">集群</a>
-			<a class="nav-item-data selected" href="showdatabases">数据</a>
+			<a class="nav-item-data selected" href="listnamespaces">数据</a>
 		</div>
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<a class="back" onclick="window.history.back()">表列表</a>
-		<table class="table-theme-d" id="hbaseTableList">
+		<p class="title">表详情
+		<a onclick="window.history.back()" class="back">返回</a>
+		</p>
+		<table class="table-theme-c hbaseTable" id="hbaseTableList">
 			<thead>				
 				<tr>
 					<th>列簇</th>
@@ -26,17 +28,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>NAME</td>
-					<td>
-						<ul>
-							<li>12</li>
-							<li>123</li>
-							<li>123</li>
-							<li>123</li>
-						</ul>
-					</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -45,16 +36,20 @@
 $(function(){
 	
 		var dt = ${dt};
-		console.log(dt.rows);
-		
-		  for (var i=0; i<dt.rows.length; i++){
-			 $("#hbaseTableList tbody").append("<tr>"+
-				"<td>"+dt.rows[i]+ "</td>"+
-				
-				
-				
-			"</tr>");
-			} 
+		for (var i=0; i<dt.name.length; i++){
+			var CF = $("<td></td>");
+			CF.html(dt.name[i]);
+			var CF_DETAIL = $("<td><dl></dl></td>");
+			for(var j=0; j<dt.rows[i].length; j++){
+				CF_DETAIL.find('dl').append(
+						"<dd>"+dt.rows[i][j][0]+"</dd>"+
+						"<dd>"+dt.rows[i][j][1]+"</dd>");	
+			}
+			var ROW = $("<tr></tr>");
+			ROW.append(CF);
+			ROW.append(CF_DETAIL);
+			$("#hbaseTableList tbody").append(ROW);
+		}
 })		
 </script>
 </body>

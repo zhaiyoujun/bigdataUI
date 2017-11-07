@@ -18,7 +18,9 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<a class="back" href="topology">拓扑列表</a>
+		<p class="title">拓扑详情
+			<a onclick="window.history.back()" class="back">返回</a>
+		</p>
 		<table class="table-theme-c" id="stormTopologyDetails">
 			<thead>
 				<tr>

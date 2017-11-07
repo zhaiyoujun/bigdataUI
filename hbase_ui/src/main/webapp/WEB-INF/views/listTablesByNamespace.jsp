@@ -17,7 +17,9 @@
 	</div>
 	<!-- navbar end -->
 	<div class="content">
-		<a class="back" href="listnamespaces">库列表</a>
+		<p class="title">表列表
+			<a onclick="window.history.back()" class="back">返回</a>
+		</p>
 		<table class="table-theme-c" id="olapTableList">
 			<thead>
 				<tr>

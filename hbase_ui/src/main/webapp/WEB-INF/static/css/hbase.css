@@ -71,10 +71,12 @@ a{
 }
 /* 返回上一页 */
 .back{
+	float:right;
 	font-size:22px;
 	color:#009899;
 	padding-left:24px;
 	background:url(../img/hbase_icon_back.png) left center no-repeat;
+	cursor:pointer;
 }
 .table-theme-a,.table-theme-b,.table-theme-c,.table-theme-d{
 	width:100%;
@@ -150,10 +152,24 @@ a{
 	background:#03969e;
 	color:#fff;
 }
-
-.table-theme-d tr th:nth-child(1),.table-theme-d tr td:nth-child(1){
-	width:120px;
+.hbaseTable td:nth-child(2){
+	text-indent:0;
 }
-.table-theme-d tr th:nth-child(2),.table-theme-d tr td:nth-child(2){
-	
+.hbaseTable dl{
+	padding:0;
+	margin:0;
+}
+.hbaseTable dd{
+	width:50%;
+	display:inline-block;
+	border-bottom:1px solid #b8b8b8;
+	padding:0;
+	margin:0;
+	text-indent:20px;
+}
+.hbaseTable dd:nth-child(odd){}
+.hbaseTable dd:last-child{border-bottom:0;}
+.hbaseTable dd:nth-last-child(2)
+{
+border-bottom:0;
 }
