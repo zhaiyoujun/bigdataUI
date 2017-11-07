@@ -151,18 +151,21 @@ public class HBaseService {
 	
 	public String getDescribeTableJS(Collection<HColumnDescriptor> hColumnDescriptors) {
 		JsonObject result = new JsonObject();
+		
+		JsonArray name = new JsonArray();
 		JsonArray rows = new JsonArray();
 //		dt.add(new JsonPrimitive(hTableDescriptor.toString()));
 //		result.add("dt", dt);
 //		return result.toString();
 		
 		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors) {
-			JsonArray row = new JsonArray();
 			
-			rows.add(new JsonPrimitive(hColumnDescriptor.getNameAsString()));
+			
+			name.add(new JsonPrimitive(hColumnDescriptor.getNameAsString()));
 			
 			Map<ImmutableBytesWritable, ImmutableBytesWritable> map = hColumnDescriptor.getValues();
 			
+			JsonArray row = new JsonArray();
 			for (ImmutableBytesWritable key : map.keySet()) {
 				JsonArray ja = new JsonArray();
 				ja.add(new JsonPrimitive(Bytes.toString(key.get())));
@@ -171,6 +174,7 @@ public class HBaseService {
 			}
 			rows.add(row);			
 		}
+		result.add("name", name);
 		result.add("rows", rows);
 		return result.toString();
 	}	
