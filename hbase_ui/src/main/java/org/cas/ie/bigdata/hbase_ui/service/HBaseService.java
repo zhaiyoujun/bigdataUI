@@ -3,6 +3,7 @@ package org.cas.ie.bigdata.hbase_ui.service;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -12,6 +13,8 @@ import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
+import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
+import org.apache.hadoop.hbase.util.Bytes;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonArray;
@@ -125,12 +128,19 @@ public class HBaseService {
 		Collection<HColumnDescriptor> hColumnDescriptors2 = hTableDescriptor.getFamilies();
 		
 		for (int i = 0; i < hColumnDescriptors.length; i++) {
+			hColumnDescriptors[i].getValues();
 			System.out.println(hColumnDescriptors[i].toString());
 		}
 		System.out.println();
 		
 		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors2) {
 			System.out.println(hColumnDescriptor.toString());
+			
+			Map<ImmutableBytesWritable, ImmutableBytesWritable> map = hColumnDescriptor.getValues();
+			for (ImmutableBytesWritable key : map.keySet()) {
+				System.out.println(Bytes.toString(key.get()));
+				System.out.println(Bytes.toString(map.get(key).get()));
+			}
 		}
 		
 		System.out.println("111111111111111111" + hColumnDescriptors.toString());
