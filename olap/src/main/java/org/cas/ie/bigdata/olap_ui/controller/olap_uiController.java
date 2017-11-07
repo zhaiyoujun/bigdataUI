@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-
 @Controller
 public class olap_uiController {
 	

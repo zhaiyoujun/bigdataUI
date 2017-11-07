@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
 import org.cas.ie.bigdata.hbase_ui.service.HBaseService;
 import org.cas.ie.bigdata.hbase_ui.service.ShellService;
@@ -81,10 +80,7 @@ public class HBaseController {
 	
 	@RequestMapping("/describetable")
 	public ModelAndView describeTable(@RequestParam(value = "table", required = true)String table) throws IOException {
-		
-//		HTableDescriptor hTableDescriptor = hBaseService.getDescribeTable(table);
-//		String dt = hBaseService.getDescribeTableJS(hTableDescriptor);
-		
+			
 		Collection<HColumnDescriptor> hColumnDescriptors = hBaseService.getDescribeTable(table);
 		String dt = hBaseService.getDescribeTableJS(hColumnDescriptors);
 		

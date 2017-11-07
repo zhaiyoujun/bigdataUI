@@ -124,29 +124,9 @@ public class HBaseService {
 		TableName tableName = TableName.valueOf(table);
 		HTableDescriptor hTableDescriptor = admin.getTableDescriptor(tableName);
 		
-		HColumnDescriptor[] hColumnDescriptors = hTableDescriptor.getColumnFamilies();
-		Collection<HColumnDescriptor> hColumnDescriptors2 = hTableDescriptor.getFamilies();
+		Collection<HColumnDescriptor> hColumnDescriptors = hTableDescriptor.getFamilies();
 		
-		for (int i = 0; i < hColumnDescriptors.length; i++) {
-			hColumnDescriptors[i].getValues();
-			System.out.println(hColumnDescriptors[i].toString());
-		}
-		System.out.println();
-		
-		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors2) {
-			System.out.println(hColumnDescriptor.toString());
-			
-			Map<ImmutableBytesWritable, ImmutableBytesWritable> map = hColumnDescriptor.getValues();
-			for (ImmutableBytesWritable key : map.keySet()) {
-				System.out.println(Bytes.toString(key.get()));
-				System.out.println(Bytes.toString(map.get(key).get()));
-			}
-		}
-		
-		System.out.println("111111111111111111" + hColumnDescriptors.toString());
-		System.out.println("222222222222222222" + hColumnDescriptors2);
-		
-		return hColumnDescriptors2;
+		return hColumnDescriptors;
 	}
 	
 	public String getDescribeTableJS(Collection<HColumnDescriptor> hColumnDescriptors) {
@@ -154,12 +134,8 @@ public class HBaseService {
 		
 		JsonArray name = new JsonArray();
 		JsonArray rows = new JsonArray();
-//		dt.add(new JsonPrimitive(hTableDescriptor.toString()));
-//		result.add("dt", dt);
-//		return result.toString();
 		
-		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors) {
-			
+		for (HColumnDescriptor hColumnDescriptor : hColumnDescriptors) {			
 			
 			name.add(new JsonPrimitive(hColumnDescriptor.getNameAsString()));
 			
