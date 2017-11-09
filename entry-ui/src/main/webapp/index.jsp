@@ -20,14 +20,14 @@
 			<div class="item-content">
 				<p class="name">文件管理系统（OLAP）</p>
 				<p class="descr" id="descrOLAP"></p>
-				<a href="http://localhost:8080/olap_ui/">点击查看</a>
+				<a href="/olap_ui/">点击查看</a>
 			</div>
 		</li>
 		<li class="item-storm">
 			<div class="item-content">
 				<p class="name">节点计算系统（STORM）</p>
 				<p class="descr" id="descrSTORM"></p>
-				<a href="http://localhost:8080/storm-ui/">点击查看</a>
+				<a href="/storm-ui/">点击查看</a>
 			</div>
 		</li>
 		<li class="item-llts">
