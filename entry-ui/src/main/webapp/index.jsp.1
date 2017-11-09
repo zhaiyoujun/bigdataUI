@@ -20,14 +20,14 @@
 			<div class="item-content">
 				<p class="name">文件管理系统（OLAP）</p>
 				<p class="descr" id="descrOLAP"></p>
-				<a href="http://localhost:8080/olap_ui/">点击查看</a>
+				<a href="/olap_ui/">点击查看</a>
 			</div>
 		</li>
 		<li class="item-storm">
 			<div class="item-content">
 				<p class="name">节点计算系统（STORM）</p>
 				<p class="descr" id="descrSTORM"></p>
-				<a href="http://localhost:8080/storm-ui/">点击查看</a>
+				<a href="/storm-ui/">点击查看</a>
 			</div>
 		</li>
 		<li class="item-llts">
@@ -41,14 +41,14 @@
 			<div class="item-content">
 				<p class="name">数据管理（HBASE）</p>
 				<p class="descr" id="descrHBASE"></p>
-				<a href="http://localhost:8080/hbase_ui/">点击查看</a>
+				<a href="/hbase_ui/">点击查看</a>
 			</div>
 		</li>
-		<li class="item-dfs disabled">
+		<li class="item-dfs">
 			<div class="item-content">
 				<p class="name">数据管理（DFS）</p>
 				<p class="descr" id="descrDFS"></p>
-				<a href="http://192.168.192.128:8120/overview">点击查看</a>
+				<a href="http://192.168.192.130:8120/overview">点击查看</a>
 			</div>
 		</li>
 	</ul>
