@@ -35,6 +35,11 @@
 	    <property name="password" value="root" />
 	</bean>
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils">
+		<!-- 配置集群节点信息，格式：hostname1#ip1,hostname2#ip2 -->
 	    <property name="host" value="node0#192.169.2.10,node1#192.168.2.11,node2#192.168.2.12,node3#192.168.2.13" />
+	    <!-- 配置ping命令参数，格式：-n ping次数  -m 超时毫秒数 -->
+		<!-- window：-n -->
+		<!-- Linux：-c -->
+	    <property name="cmdParam" value="-n 1 -w 100"></property>
 	</bean>
 </beans>

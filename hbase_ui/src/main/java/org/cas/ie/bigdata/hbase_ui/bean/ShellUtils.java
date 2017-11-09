@@ -3,10 +3,16 @@ package org.cas.ie.bigdata.hbase_ui.bean;
 import java.util.ArrayList;
 
 public class ShellUtils {
-private String host = "node0#192.168.2.57,node1#192.168.2.58";
+	private String host = "node0#192.168.2.57,node1#192.168.2.58";
+	
+	private String cmdParam = "-n 1 -w 100";
 	
 	public void setHost(String host) {
 		this.host = host;
+	}
+	
+	public void setCmdParam(String cmdParam) {
+		this.cmdParam = cmdParam;
 	}
 	
 	public ArrayList<String[]> splitHost() {
@@ -20,7 +26,9 @@ private String host = "node0#192.168.2.57,node1#192.168.2.58";
 		for (int i = 0 ; i < hostCount; i++) {
 			String[] node = hostSet[i].split("#");
 			nodeSet[i] = node[0];
-			ipSet[i] = node[1];
+			if (node.length > 1) {				
+				ipSet[i] = node[1];
+			}			
 		}
 		ArrayList<String[]> splitResult = new ArrayList<String[]>();
 		splitResult.add(0, nodeSet);
@@ -39,7 +47,7 @@ private String host = "node0#192.168.2.57,node1#192.168.2.58";
 	public ArrayList<String> getPingCmdSet(String[] ipSet) {
 		ArrayList<String> pingCmdSet = new ArrayList<String>();
 		for (int i = 0; i < ipSet.length; i++) {
-			pingCmdSet.add("ping" + " " + ipSet[i] + " " + "-n 1 -w 100");
+			pingCmdSet.add("ping" + " " + ipSet[i] + " " + this.cmdParam);
 		}
 		return pingCmdSet;
 	}
