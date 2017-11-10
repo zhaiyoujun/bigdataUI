@@ -29,10 +29,18 @@
     </bean>
     <!-- 配置数据源 -->
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.DBUtils">
+	    <!-- 
 	    <property name="driver" value="com.mysql.jdbc.Driver" />
 	    <property name="dbconnect" value="jdbc:mysql://127.0.0.1:3306" />
 	    <property name="username" value="root" />
 	    <property name="password" value="root" />
+	    <property name="database" value="mysql" />
+	     -->
+	     <property name="driver" value="org.postgresql.Driver" />
+	    <property name="dbconnect" value="jdbc:postgresql://192.168.2.58:5432" />
+	    <property name="username" value="postgres" />
+	    <property name="password" value="postgres" />
+	    <property name="database" value="postgres" />
 	</bean>
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils">
 		<!-- 配置集群节点信息，格式：hostname1#ip1,hostname2#ip2 -->
@@ -41,5 +49,29 @@
 		<!-- window：-n -->
 		<!-- Linux：-c -->
 	    <property name="cmdParam" value="-n 1 -w 100"></property>
+	</bean>
+	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.QueryUtils">
+	    <property name="showDatabaseSql" value="select datname from pg_database;" />
+	    <property name="showTablesSql" value="select tablename from pg_tables 
+	    where tablename not like 'pg%'
+	    and tablename not like 'sql_%'
+	    order by tablename;"></property>
+	    <property name="describeTableSqlHead" value="SELECT a.attnum,
+       a.attname AS field,
+       t.typname AS type,
+       a.attlen AS length,
+       a.atttypmod AS lengthvar,
+       a.attnotnull AS notnull,
+       b.description AS comment
+  FROM pg_class c,
+       pg_attribute a
+       LEFT OUTER JOIN pg_description b ON a.attrelid=b.objoid AND a.attnum = b.objsubid,
+       pg_type t
+ WHERE c.relname = '"></property>
+ <property name="describeTableSqlEnd" value="'
+       and a.attnum > 0
+       and a.attrelid = c.oid
+       and a.atttypid = t.oid
+ ORDER BY a.attnum;"></property>
 	</bean>
 </beans>

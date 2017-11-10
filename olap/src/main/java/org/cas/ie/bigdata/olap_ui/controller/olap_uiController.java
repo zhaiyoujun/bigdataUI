@@ -8,6 +8,7 @@ import java.util.HashMap;
 import org.cas.ie.bigdata.olap_ui.service.QueryService;
 import org.cas.ie.bigdata.olap_ui.service.ShellService;
 import org.cas.ie.bigdata.olap_ui.sql.common.DBUtils;
+import org.cas.ie.bigdata.olap_ui.sql.common.QueryUtils;
 import org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,9 @@ public class olap_uiController {
 	
 	@Autowired
 	DBUtils dbUtils;
+	
+	@Autowired
+	QueryUtils queryUtils;
 	
 	@RequestMapping("/")
 	public ModelAndView showCluster() throws IOException, InterruptedException {
@@ -60,7 +64,7 @@ public class olap_uiController {
     @RequestMapping("/showdatabases")
     public ModelAndView showDatabases() throws ClassNotFoundException, SQLException, IOException {
      
-    	String sql = "show databases;";   
+    	String sql = queryUtils.getShowDatabaseSql();   
     	
     	String rs = queryService.query(sql, null);
     	
@@ -73,7 +77,7 @@ public class olap_uiController {
     @RequestMapping("/showtables")
     public ModelAndView showTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
      
-    	String sql = "show tables;";
+    	String sql = queryUtils.getShowTablesSql();
     
     	String rs = queryService.query(sql, name);
     	
@@ -92,7 +96,7 @@ public class olap_uiController {
     		@RequestParam(value = "database", required = true) String database, 
     		@RequestParam(value = "table", required = true) String table) throws ClassNotFoundException, SQLException, IOException {
      
-    	String sql = "describe" + " " + table + ";";
+    	String sql = queryUtils.getDescribeTableSqlHead() + table + queryUtils.getDescribeTableSqlEnd();
     
     	String dt = queryService.query(sql, database);
     	

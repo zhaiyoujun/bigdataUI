@@ -11,6 +11,7 @@ public class DBUtils {
 	private String dbconnect = "jdbc:mysql://127.0.0.1:3306";
 	private String username = "root";
 	private String password = "root";
+	private String database = "test";
 	
 	public void setDriver(String driver) {
 		this.driver = driver;
@@ -28,11 +29,18 @@ public class DBUtils {
 		this.password = password;
 	}
 	
+	public void setDatabase(String database) {
+		this.database = database;
+	}
+	
 	public Connection connect(String database) throws IOException, ClassNotFoundException, SQLException {
 		Class.forName(this.driver);
 	    String dbconn = this.dbconnect;
-	    if (database != null)
+	    if (database != null) {
 	    	dbconn = dbconn + '/' + database;
+	    }else {
+	    	dbconn = dbconn + '/' + this.database;
+	    }
 	    return DriverManager.getConnection(
 	      dbconn,
 	      this.username,
