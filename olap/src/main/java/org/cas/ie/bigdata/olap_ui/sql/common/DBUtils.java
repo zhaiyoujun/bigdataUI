@@ -31,8 +31,8 @@ public class DBUtils {
 	public Connection connect(String database) throws IOException, ClassNotFoundException, SQLException {
 		Class.forName(this.driver);
 	    String dbconn = this.dbconnect;
-	    if (database != null)
-	    	dbconn = dbconn + '/' + database;
+//	    if (database != null)
+//	    	dbconn = dbconn + "DatabaseName=" + database;
 	    return DriverManager.getConnection(
 	      dbconn,
 	      this.username,

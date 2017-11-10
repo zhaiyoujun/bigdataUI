@@ -60,7 +60,7 @@ public class olap_uiController {
     @RequestMapping("/showdatabases")
     public ModelAndView showDatabases() throws ClassNotFoundException, SQLException, IOException {
      
-    	String sql = "show databases;";   
+    	String sql = "\\l";   
     	
     	String rs = queryService.query(sql, null);
     	
@@ -73,7 +73,7 @@ public class olap_uiController {
     @RequestMapping("/showtables")
     public ModelAndView showTables(@RequestParam(value = "database", required = true) String name) throws ClassNotFoundException, SQLException, IOException {
      
-    	String sql = "show tables;";
+    	String sql = "\\dt";
     
     	String rs = queryService.query(sql, name);
     	
@@ -92,7 +92,7 @@ public class olap_uiController {
     		@RequestParam(value = "database", required = true) String database, 
     		@RequestParam(value = "table", required = true) String table) throws ClassNotFoundException, SQLException, IOException {
      
-    	String sql = "describe" + " " + table + ";";
+    	String sql = "\\d" + " " + table;
     
     	String dt = queryService.query(sql, database);
     	

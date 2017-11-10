@@ -29,10 +29,20 @@
     </bean>
     <!-- 配置数据源 -->
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.DBUtils">
+		<!-- 连接mysql -->
+	    <!-- 
 	    <property name="driver" value="com.mysql.jdbc.Driver" />
 	    <property name="dbconnect" value="jdbc:mysql://127.0.0.1:3306" />
 	    <property name="username" value="root" />
 	    <property name="password" value="root" />
+	     -->
+	    <!-- 连接postgresql -->
+	     
+	    <property name="driver" value="org.postgresql.Driver" />
+	    <property name="dbconnect" value="jdbc:postgresql://192.168.2.58:5432/postgres" />
+	    <property name="username" value="postgres" />
+	    <property name="password" value="postgres" />
+	    
 	</bean>
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils">
 		<!-- 配置集群节点信息，格式：hostname1#ip1,hostname2#ip2 -->
@@ -42,4 +52,5 @@
 		<!-- Linux：-c -->
 	    <property name="cmdParam" value="-n 1 -w 100"></property>
 	</bean>
+	
 </beans>
