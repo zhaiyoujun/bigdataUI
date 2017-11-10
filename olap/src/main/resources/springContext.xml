@@ -30,19 +30,19 @@
     
     <!-- 配置数据源 -->
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.DBUtils">
-	<!-- mysql配置 -->
+	<!-- mysql配置 
 	    <property name="driver" value="com.mysql.jdbc.Driver" />
 	    <property name="dbconnect" value="jdbc:mysql://127.0.0.1:3306" />
 	    <property name="username" value="root" />
 	    <property name="password" value="root" />
-	    <property name="database" value="mysql" />
+	    <property name="database" value="mysql" />-->
 	     
-	<!-- postgre配置
+	<!-- postgre配置 -->
 	    <property name="driver" value="org.postgresql.Driver" />
-	    <property name="dbconnect" value="jdbc:postgresql://192.168.2.58:5432" />
-	    <property name="username" value="postgres" />
-	    <property name="password" value="postgres" />
-	    <property name="database" value="postgres" /> -->
+	    <property name="dbconnect" value="jdbc:postgresql://192.168.1.156:5432" />
+	    <property name="username" value="gpadmin" />
+	    <property name="password" value="" />
+	    <property name="database" value="postgres" /> 
 	</bean>
 	
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils">
@@ -58,12 +58,14 @@
 	
 	<!-- 查询语句配置 -->
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.QueryUtils">
-	<!-- mysql -->
+	<!-- mysql 
 		<property name="showDatabaseSql" value="show databases;" ></property>
 	    <property name="showTablesSql" value="show tables;"></property>
 	    <property name="describeTableSqlHead" value="describe "></property>
- 		<property name="describeTableSqlEnd" value=";"></property>
-	<!-- postgreSql 
+ 		<property name="describeTableSqlEnd" value=";"></property>-->
+ 		
+ 		
+	<!-- postgreSql -->
 	    <property name="showDatabaseSql" value="select datname from pg_database;" />
 	    <property name="showTablesSql" value="select tablename from pg_tables 
 	    where tablename not like 'pg%'
@@ -85,7 +87,7 @@
        and a.attnum > 0
        and a.attrelid = c.oid
        and a.atttypid = t.oid
- ORDER BY a.attnum;"></property>-->
+ ORDER BY a.attnum;"></property>
 	</bean>
 	
 </beans>
