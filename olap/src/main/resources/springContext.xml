@@ -31,32 +31,39 @@
     <!-- 配置数据源 -->
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.DBUtils">
 	<!-- mysql配置 -->
-	    <!-- 
 	    <property name="driver" value="com.mysql.jdbc.Driver" />
 	    <property name="dbconnect" value="jdbc:mysql://127.0.0.1:3306" />
 	    <property name="username" value="root" />
 	    <property name="password" value="root" />
 	    <property name="database" value="mysql" />
-	     -->
-	<!-- postgre配置 -->
+	     
+	<!-- postgre配置
 	    <property name="driver" value="org.postgresql.Driver" />
 	    <property name="dbconnect" value="jdbc:postgresql://192.168.2.58:5432" />
 	    <property name="username" value="postgres" />
 	    <property name="password" value="postgres" />
-	    <property name="database" value="postgres" />
+	    <property name="database" value="postgres" /> -->
 	</bean>
 	
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.ShellUtils">
 		<!-- 配置集群节点信息，格式：hostname1#ip1,hostname2#ip2 -->
 	    <property name="host" value="node0#192.169.2.10,node1#192.168.2.11,node2#192.168.2.12,node3#192.168.2.13" />
 	    <!-- 配置ping命令参数，格式：-n ping次数  -m 超时毫秒数 -->
-		<!-- window：-n -->
-		<!-- Linux：-c -->
-	    <property name="cmdParam" value="-n 1 -w 100"></property>
+		<!-- window -->
+		<property name="cmdParam" value="-n 1 -w 100"></property>
+		<!-- Linux 
+		<property name="cmdParam" value="-c 1 -w 100"></property>
+		 -->
 	</bean>
 	
 	<!-- 查询语句配置 -->
 	<bean class="org.cas.ie.bigdata.olap_ui.sql.common.QueryUtils">
+	<!-- mysql -->
+		<property name="showDatabaseSql" value="show databases;" ></property>
+	    <property name="showTablesSql" value="show tables;"></property>
+	    <property name="describeTableSqlHead" value="describe "></property>
+ 		<property name="describeTableSqlEnd" value=";"></property>
+	<!-- postgreSql 
 	    <property name="showDatabaseSql" value="select datname from pg_database;" />
 	    <property name="showTablesSql" value="select tablename from pg_tables 
 	    where tablename not like 'pg%'
@@ -74,11 +81,11 @@
        LEFT OUTER JOIN pg_description b ON a.attrelid=b.objoid AND a.attnum = b.objsubid,
        pg_type t
  WHERE c.relname = '"></property>
- <property name="describeTableSqlEnd" value="'
+ 		<property name="describeTableSqlEnd" value="'
        and a.attnum > 0
        and a.attrelid = c.oid
        and a.atttypid = t.oid
- ORDER BY a.attnum;"></property>
+ ORDER BY a.attnum;"></property>-->
 	</bean>
 	
 </beans>
