@@ -32,11 +32,11 @@
 		<!-- 配置集群节点信息，格式：hostname1#ip1,hostname2#ip2 -->
 		<property name="host" value="node0#192.168.2.57,node1#192.168.2.58"></property>
 		<!-- 配置ping命令参数 -->
-		<!-- window 
-		<property name="cmdParam" value="-n 1 -w 100"></property>-->
+		<!-- window -->
+		<property name="cmdParam" value="-n 1 -w 100"></property>
 		<!-- Linux -->
-		<!-- -->
-		<property name="cmdParam" value="-c 1 -W 1"></property>
+		<!-- 
+		<property name="cmdParam" value="-c 1 -W 1"></property>-->
 		 
 	</bean>
 </beans>
